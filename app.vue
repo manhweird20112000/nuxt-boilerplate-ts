@@ -1,6 +1,9 @@
 <template>
   <div class="bg-red-500">hehe</div>
   <common-field />
+  <el-button>
+    OK
+  </el-button>
 </template>
 
 <script setup lang="ts">

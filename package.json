@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@element-plus/nuxt": "^1.0.9",
     "@nuxtjs/sitemap": "^5.1.4",
     "@pinia/nuxt": "^0.5.1",
     "nuxt": "^3.11.2",
@@ -20,6 +21,7 @@
     "@typescript-eslint/eslint-plugin": "^7.7.0",
     "@typescript-eslint/parser": "^7.7.0",
     "autoprefixer": "^10.4.19",
+    "element-plus": "^2.7.1",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.25.0",
     "postcss": "^8.4.38",

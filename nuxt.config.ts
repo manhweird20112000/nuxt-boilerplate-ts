@@ -38,7 +38,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ['@pinia/nuxt', "@nuxtjs/sitemap"],
+  modules: ['@pinia/nuxt', "@nuxtjs/sitemap", "@element-plus/nuxt"],
   vite: {
     resolve: {
       alias: {
