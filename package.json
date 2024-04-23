@@ -7,7 +7,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "prepare": "husky",
+    "lint": "eslint --fix"
   },
   "dependencies": {
     "@element-plus/nuxt": "^1.0.9",
@@ -24,6 +26,7 @@
     "element-plus": "^2.7.1",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.25.0",
+    "husky": "^9.0.11",
     "postcss": "^8.4.38",
     "sass": "^1.75.0",
     "sass-loader": "^14.2.1",
