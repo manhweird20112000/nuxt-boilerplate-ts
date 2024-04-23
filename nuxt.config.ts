@@ -1,57 +1,56 @@
-import { createResolver } from "@nuxt/kit";
-const { resolve } = createResolver(import.meta.url);
+// eslint-disable-next-line import/no-unresolved
+import { createResolver } from '@nuxt/kit'
+const { resolve } = createResolver(import.meta.url)
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
-      title: "NUXT",
-    },
+      title: 'NUXT'
+    }
   },
   ssr: true,
   components: [
     {
-      prefix: "common",
+      prefix: 'common',
       global: true,
-      path: resolve("./components/common"),
+      path: resolve('./components/common')
     },
     {
-      prefix: "layout",
+      prefix: 'layout',
       global: true,
-      path: resolve("./components/layouts"),
+      path: resolve('./components/layouts')
     },
     {
-      prefix: "page",
+      prefix: 'page',
       global: true,
-      path: resolve("./components/pages"),
+      path: resolve('./components/pages')
     },
     {
-      prefix: "partial",
+      prefix: 'partial',
       global: true,
-      path: resolve("./components/partials"),
-    },
+      path: resolve('./components/partials')
+    }
   ],
-  css: ["@/assets/styles/index.scss"],
+  css: ['@/assets/styles/index.scss'],
   postcss: {
     plugins: {
       tailwindcss: {},
-      autoprefixer: {},
-    },
+      autoprefixer: {}
+    }
   },
-  modules: ['@pinia/nuxt', "@nuxtjs/sitemap", "@element-plus/nuxt"],
+  modules: ['@pinia/nuxt', '@nuxtjs/sitemap', '@element-plus/nuxt'],
   vite: {
     resolve: {
       alias: {
-        "@": "./",
-      },
+        '@': './'
+      }
     },
-    plugins: [],
+    plugins: []
   },
   typescript: {
     typeCheck: true,
     strict: true,
-    tsConfig: {
-    
-    }
+    tsConfig: {}
   }
-});
+})

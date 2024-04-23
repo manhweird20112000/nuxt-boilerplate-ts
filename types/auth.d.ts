@@ -1,11 +1,11 @@
 declare global {
-    interface IAuth {
-        id: number
-    }
+  interface IAuth {
+    id: number
+  }
 
-    interface IResponse {
-        message: string
-    }
+  interface IResponse {
+    message: string
+  }
 }
 
-export {};
+export {}
