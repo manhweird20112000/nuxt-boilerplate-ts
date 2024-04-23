@@ -48,6 +48,10 @@ export default defineNuxtConfig({
     plugins: [],
   },
   typescript: {
-    typeCheck: true
+    typeCheck: true,
+    strict: true,
+    tsConfig: {
+    
+    }
   }
 });
