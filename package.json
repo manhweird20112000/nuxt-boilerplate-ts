@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@element-plus/nuxt": "^1.0.9",
+    "@nuxtjs/robots": "^3.0.0",
     "@nuxtjs/sitemap": "^5.1.4",
     "@pinia/nuxt": "^0.5.1",
     "axios": "^1.6.8",

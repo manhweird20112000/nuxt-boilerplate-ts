@@ -54,7 +54,7 @@ export default defineNuxtConfig({
       autoprefixer: {}
     }
   },
-  modules: ['@pinia/nuxt', '@nuxtjs/sitemap', '@element-plus/nuxt'],
+  modules: ['@pinia/nuxt', '@nuxtjs/sitemap', '@element-plus/nuxt', '@nuxtjs/robots'],
   vite: {
     resolve: {
       alias: {
@@ -67,5 +67,10 @@ export default defineNuxtConfig({
     typeCheck: true,
     strict: true,
     tsConfig: {}
+  },
+  build: {},
+  devServer: {
+    host: '0.0.0.0',
+    port: Number(process.env['PORT']) || 8000
   }
 })
