@@ -9,7 +9,6 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       meta: [
-
         { name: 'description', content: process.env['APP_NAME'] || '' },
         { name: 'fb:app_id', content: '' },
         { hid: 'og:image', property: 'og:image', content: '/favicon.svg' },
