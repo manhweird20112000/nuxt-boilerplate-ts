@@ -5,7 +5,24 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
-      title: 'NUXT'
+      title: process.env['APP_NAME'] || '',
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+      meta: [
+
+        { name: 'description', content: process.env['APP_NAME'] || '' },
+        { name: 'fb:app_id', content: '' },
+        { hid: 'og:image', property: 'og:image', content: '/favicon.svg' },
+        { hid: 'twitter:image', property: 'twitter:image', content: '/favicon.svg' },
+        { hid: 'twitter:description', property: 'twitter:description', content: '' },
+        { hid: 'twitter:card', property: 'twitter:card', content: '' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/favicon.svg' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+        { href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap', rel: 'stylesheet' }
+      ]
     }
   },
   ssr: true,
