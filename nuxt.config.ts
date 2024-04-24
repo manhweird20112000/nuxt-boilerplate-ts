@@ -54,7 +54,7 @@ export default defineNuxtConfig({
       autoprefixer: {}
     }
   },
-  modules: ['@pinia/nuxt', '@nuxtjs/sitemap', '@element-plus/nuxt', '@nuxtjs/robots'],
+  modules: ['@pinia/nuxt', '@nuxtjs/sitemap', '@element-plus/nuxt', '@nuxtjs/robots', 'nuxt-typed-router'],
   vite: {
     resolve: {
       alias: {
