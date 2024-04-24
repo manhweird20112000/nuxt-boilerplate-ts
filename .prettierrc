@@ -7,5 +7,6 @@
   "tabWidth": 2,
   "printWidth": 160,
   "endOfLine": "lf",
-  "vueIndentScriptAndStyle": false
+  "vueIndentScriptAndStyle": false,
+  "experimentalTernaries": true
 }

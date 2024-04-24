@@ -41,7 +41,7 @@ module.exports = {
       }
     ],
     'object-curly-spacing': ['error', 'always'],
-    'space-before-function-paren': ['error', 'always'],
+    'space-before-function-paren': 0,
     'space-infix-ops': [
       'error',
       {
