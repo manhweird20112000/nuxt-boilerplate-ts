@@ -6,7 +6,7 @@ const message = ref<IResponse>({ message: 'OK' })
 
 <template>
   <div>
-    <div class="bg-red-500">hehe</div>
+    <div class="bg-red-500">{{ $t('welcome') }}</div>
     <common-field />
     <el-button>OK</el-button>
   </div>

@@ -54,7 +54,7 @@ export default defineNuxtConfig({
       autoprefixer: {}
     }
   },
-  modules: ['@pinia/nuxt', '@nuxtjs/sitemap', '@element-plus/nuxt', '@nuxtjs/robots', 'nuxt-typed-router'],
+  modules: ['@pinia/nuxt', '@nuxtjs/sitemap', '@element-plus/nuxt', '@nuxtjs/robots', 'nuxt-typed-router', '@nuxtjs/i18n'],
   vite: {
     resolve: {
       alias: {
@@ -72,5 +72,8 @@ export default defineNuxtConfig({
   devServer: {
     host: '0.0.0.0',
     port: Number(process.env['PORT']) || 8000
+  },
+  i18n: {
+    vueI18n: './infra/i18n/index.ts'
   }
 })
