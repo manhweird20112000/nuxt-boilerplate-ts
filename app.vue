@@ -2,6 +2,7 @@
 const count = ref()
 const auth = ref<IAuth>({ id: 1 })
 const message = ref<IResponse>({ message: 'OK' })
+console.log(import.meta.env.VITE_DEV_MODE)
 </script>
 
 <template>
