@@ -7,8 +7,11 @@ console.log(import.meta.env.VITE_DEV_MODE)
 
 <template>
   <div>
-    <div class="bg-red-500">{{ $t('welcome') }}</div>
+    <div class="bg-red-500">
+      {{ $t('welcome') }}
+    </div>
     <common-field />
     <el-button>OK</el-button>
+    <common-editor />
   </div>
 </template>
