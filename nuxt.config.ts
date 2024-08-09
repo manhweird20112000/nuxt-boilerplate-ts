@@ -61,7 +61,16 @@ export default defineNuxtConfig({
         '@': './'
       }
     },
-    plugins: []
+    plugins: [],
+    server: {
+      proxy: {
+        '/api': {
+          target: process.env.VITE_API_URL,
+          changeOrigin: true,
+          rewrite: (path: string) => path.replace(/^\/api/, '')
+        }
+      }
+    }
   },
   typescript: {
     typeCheck: true,
