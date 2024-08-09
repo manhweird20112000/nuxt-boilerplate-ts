@@ -18,6 +18,7 @@
     "@nuxtjs/sitemap": "^5.1.4",
     "@pinia/nuxt": "^0.5.1",
     "axios": "^1.6.8",
+    "gsap": "^3.12.5",
     "nuxt": "^3.11.2",
     "nuxt-typed-router": "^3.6.3",
     "vue": "^3.4.21",
