@@ -41,7 +41,10 @@
     "sass": "^1.75.0",
     "sass-loader": "^14.2.1",
     "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.5",
-    "vue-tsc": "^1"
+    "typescript": "^5.5.4",
+    "vue-tsc": "^2.0.29"
+  },
+  "resolutions": {
+    "string-width": "^1.0.2 || 2 || 3 || 4"
   }
 }
