@@ -1,8 +1,11 @@
 import { createResolver } from '@nuxt/kit'
 const { resolve } = createResolver(import.meta.url)
-// https://nuxt.com/docs/api/configuration/nuxt-config
+
+console.log(process.env.VITE_API_URL)
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   app: {
     head: {
       title: process.env['APP_NAME'] || '',
@@ -24,7 +27,9 @@ export default defineNuxtConfig({
       ]
     }
   },
+
   ssr: true,
+
   components: [
     {
       prefix: 'common',
@@ -47,41 +52,49 @@ export default defineNuxtConfig({
       path: resolve('./components/partials')
     }
   ],
+
   css: ['@/assets/styles/index.scss'],
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {}
     }
   },
+
   modules: ['@pinia/nuxt', '@nuxtjs/sitemap', '@element-plus/nuxt', '@nuxtjs/robots', 'nuxt-typed-router', '@nuxtjs/i18n'],
+
   vite: {
     resolve: {
       alias: {
         '@': './'
       }
     },
-    plugins: [],
-    server: {
-      proxy: {
-        '/api': {
-          target: process.env.VITE_API_URL,
-          changeOrigin: true,
-          rewrite: (path: string) => path.replace(/^\/api/, '')
-        }
-      }
-    }
+    plugins: []
+    // server: {
+    //   proxy: {
+    //     '/api': {
+    //       target: process.env.VITE_API_URL,
+    //       changeOrigin: true,
+    //       rewrite: (path: string) => path.replace(/^\/api/, '')
+    //     }
+    //   }
+    // }
   },
+
   typescript: {
     typeCheck: true,
     strict: true,
     tsConfig: {}
   },
+
   build: {},
+
   devServer: {
     host: '0.0.0.0',
     port: Number(process.env['PORT']) || 8000
   },
+
   i18n: {
     vueI18n: './infra/i18n/index.ts'
   }
