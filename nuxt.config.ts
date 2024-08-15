@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   },
 
   ssr: true,
-
+  spaLoadingTemplate: './app-loading.html', // work when ssr: false
   components: [
     {
       prefix: 'common',
