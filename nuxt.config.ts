@@ -21,9 +21,9 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/favicon.svg' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-        { href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap', rel: 'stylesheet' }
+        { rel: 'preload', href: 'https://fonts.googleapis.com' },
+        { rel: 'preload', href: 'https://fonts.gstatic.com' },
+        { href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap', rel: 'stylesheet', crossorigin: 'anonymous' }
       ]
     }
   },
