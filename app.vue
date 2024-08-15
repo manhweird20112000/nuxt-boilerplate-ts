@@ -5,9 +5,14 @@ import { useTranslate } from '~/composables/use-translate'
 const count = ref()
 const auth = ref<IAuth>({ id: 1 })
 const message = ref<IResponse>({ message: 'OK' })
+const emits = defineEmits<{
+  change: [id: number]
+}>()
 const { data, error, refresh, status, clear } = useSSR('users', 'users')
+const users = ref(data)
 const { translate } = useTranslate()
-console.log(translate('welcome'))
+
+const text = computed<string>(() => translate('welcome'))
 </script>
 
 <template>
@@ -17,7 +22,7 @@ console.log(translate('welcome'))
     </div>
     {{ status }}
     <ul>
-      <li v-for="item in data" :key="item['id']">
+      <li v-for="item in users" :key="item['id']">
         {{ item['name'] }}
       </li>
     </ul>

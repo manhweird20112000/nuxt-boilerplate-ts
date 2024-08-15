@@ -30,6 +30,9 @@ export default defineNuxtConfig({
 
   ssr: true,
 
+  // work when ssr: false
+  spaLoadingTemplate: './app-loading.html',
+
   components: [
     {
       prefix: 'common',
@@ -97,5 +100,7 @@ export default defineNuxtConfig({
 
   i18n: {
     vueI18n: './infra/i18n/index.ts'
-  }
+  },
+
+  compatibilityDate: '2024-11-04'
 })
