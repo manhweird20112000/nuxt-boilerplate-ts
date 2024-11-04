@@ -28,6 +28,7 @@ module.exports = {
         order: ['script:not([setup])', 'script[setup]', 'script[lang=ts]', 'template']
       }
     ],
+    'vue/singleline-html-element-content-newline': 0,
     'tailwindcss/no-custom-classname': 0,
     indent: ['error', 2],
     quotes: ['error', 'single'],
