@@ -16,17 +16,23 @@ const text = computed<string>(() => translate('welcome'))
 </script>
 
 <template>
-  <div>
-    <div class="bg-red-500">
-      {{ $t('welcome') }}
+  <nuxt-error-boundary>
+    <div>
+      <div class="bg-red-500">
+        {{ $t('welcome') }}
+      </div>
+      {{ status }}
+      <ul>
+        <li v-for="item in users" :key="item['id']">
+          {{ item['name'] }}
+        </li>
+      </ul>
+      <button @click="refresh()">refresh</button>
+      <button @click="clear()">clear</button>
     </div>
-    {{ status }}
-    <ul>
-      <li v-for="item in users" :key="item['id']">
-        {{ item['name'] }}
-      </li>
-    </ul>
-    <button @click="refresh()">refresh</button>
-    <button @click="clear()">clear</button>
-  </div>
+    <nuxt-page />
+    <template #error="{ error }">
+      {{ error }}
+    </template>
+  </nuxt-error-boundary>
 </template>

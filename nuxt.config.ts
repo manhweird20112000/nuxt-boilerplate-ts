@@ -65,7 +65,7 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ['@pinia/nuxt', '@nuxtjs/sitemap', '@element-plus/nuxt', '@nuxtjs/robots', 'nuxt-typed-router', '@nuxtjs/i18n'],
+  modules: ['@pinia/nuxt', '@nuxtjs/sitemap', '@element-plus/nuxt', '@nuxtjs/robots', '@nuxtjs/i18n', 'nuxt-vitalizer'],
 
   vite: {
     resolve: {
@@ -102,5 +102,9 @@ export default defineNuxtConfig({
     vueI18n: './infra/i18n/index.ts'
   },
 
-  compatibilityDate: '2024-11-04'
+  compatibilityDate: '2024-11-04',
+
+  vitalizer: {
+    disableStylesheets: 'entry'
+  }
 })
