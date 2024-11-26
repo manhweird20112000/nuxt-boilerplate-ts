@@ -4,8 +4,10 @@ const { resolve } = createResolver(import.meta.url)
 console.log(process.env.VITE_API_URL)
 
 export default defineNuxtConfig({
-  devtools: { enabled: true },
-
+  devtools: { enabled: false },
+  future: {
+    compatibilityVersion: 4
+  },
   app: {
     head: {
       title: process.env['APP_NAME'] || '',
@@ -71,6 +73,13 @@ export default defineNuxtConfig({
     resolve: {
       alias: {
         '@': './'
+      }
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler'
+        }
       }
     },
     plugins: []
