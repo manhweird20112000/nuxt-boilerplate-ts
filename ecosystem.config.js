@@ -2,10 +2,13 @@ module.exports = {
   apps: [
     {
       name: 'nuxt-base',
-      port: '3020',
+      port: process.env.PORT,
       exec_mode: 'cluster',
       instances: 'max',
-      script: './.output/server/index.mjs'
+      script: './.output/server/index.mjs',
+      env: {
+        port: process.env.PORT
+      }
     }
   ]
 }
