@@ -73,6 +73,9 @@
     "watchEffect": true,
     "watchPostEffect": true,
     "watchSyncEffect": true,
-    "defineI18nConfig": true
+    "defineI18nConfig": true,
+    "defineEmits": true,
+    "defineProps": true,
+    "withDefault": true
   }
 }

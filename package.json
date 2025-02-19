@@ -20,8 +20,7 @@
     "@pinia/nuxt": "^0.5.1",
     "axios": "^1.6.8",
     "gsap": "^3.12.5",
-    "nuxt": "^3.13.2",
-    "nuxt-vitalizer": "^0.10.0",
+    "nuxt": "^3.15.4",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
@@ -46,6 +45,6 @@
     "vue-tsc": "^2.0.29"
   },
   "resolutions": {
-    "string-width": "^1.0.2 || 2 || 3 || 4"
+    "string-width": "4.2.3"
   }
 }
