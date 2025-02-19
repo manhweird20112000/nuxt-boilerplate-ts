@@ -1,9 +1,4 @@
-<script setup lang="ts">
-// const handleClose = () => {
-//   console.log('CLOSE')
-// }
-// usePreventBrowserBack(handleClose)
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div>Home</div>

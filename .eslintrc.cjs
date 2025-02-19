@@ -11,7 +11,8 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     '@nuxtjs/eslint-config-typescript',
-    './.eslintrc-auto-import.json'
+    './.eslintrc-auto-import.json',
+    'prettier'
   ],
   overrides: [],
   parser: 'vue-eslint-parser',
@@ -30,7 +31,7 @@ module.exports = {
     ],
     'vue/singleline-html-element-content-newline': 0,
     'tailwindcss/no-custom-classname': 0,
-    indent: ['error', 2],
+    indent: 0,
     quotes: ['error', 'single'],
     semi: 0,
     'comma-dangle': ['error', 'never'],
@@ -119,7 +120,8 @@ module.exports = {
       {
         trailingComma: 'none',
         semi: false
-      }
+      },
+      { "tabWidth": 2, "useTabs": false }
     ]
   }
 }

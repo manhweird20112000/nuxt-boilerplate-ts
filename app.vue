@@ -13,13 +13,25 @@ const users = ref(data)
 const { translate } = useTranslate()
 
 const text = computed<string>(() => translate('welcome'))
+
+const errors = reactive({
+  num: 1
+})
 </script>
 
 <template>
   <nuxt-error-boundary>
     <div>
-      <div class="bg-red-500">
-        {{ $t('welcome') }}
+      <div
+        class="bg-red-500"
+        @click="
+          () => {
+            auth.id = 2
+            errors.num = 6
+          }
+        "
+      >
+        {{ $t('welcome') }} {{ auth.id }}
       </div>
       {{ status }}
       <ul>
