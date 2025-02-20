@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    YOUNGBOIW3RD
+    PAGE HOME
     <div class="grid grid-cols-2 gap-2">
       <common-icon name="language" color="red" />
       <common-icon name="language" color="deeppink" />

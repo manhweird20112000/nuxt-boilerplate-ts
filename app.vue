@@ -1,6 +1,9 @@
+<script setup lang="ts"></script>
 <template>
   <nuxt-error-boundary>
-    <nuxt-page />
+    <nuxt-layout>
+      <nuxt-page />
+    </nuxt-layout>
     <template #error="{ error }">
       {{ error }}
     </template>

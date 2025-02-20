@@ -112,6 +112,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-04',
   hooks: {
     ready() {
+      console.log('GENERATE FILE ICON MAP')
       const data: Record<string, string> = {}
       const pathFolderIcon = path.join(process.cwd(), 'public', 'icons')
       if (!fs.existsSync(pathFolderIcon)) {
