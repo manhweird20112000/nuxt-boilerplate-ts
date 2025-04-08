@@ -2,6 +2,7 @@ import * as fs from 'node:fs'
 import path from 'node:path'
 
 import { createResolver } from '@nuxt/kit'
+import ElementPlus from 'unplugin-element-plus/vite'
 const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
@@ -43,7 +44,9 @@ export default defineNuxtConfig({
   },
 
   modules: ['@pinia/nuxt', '@nuxtjs/sitemap', '@element-plus/nuxt', '@nuxtjs/robots', '@nuxtjs/i18n'],
-
+  elementPlus: {
+    importStyle: 'scss'
+  },
   vite: {
     resolve: {
       alias: {
@@ -53,11 +56,17 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
+          additionalData: '@use "./assets/styles/element/index.scss" as *;',
           api: 'modern-compiler'
         }
       }
     },
-    plugins: []
+
+    plugins: [
+      ElementPlus({
+        useSource: true
+      })
+    ]
     // server: {
     //   proxy: {
     //     '/api': {
