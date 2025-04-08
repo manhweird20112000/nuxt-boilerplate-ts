@@ -20,7 +20,7 @@ const address = computed(() => {
 <template>
   <div>
     <common-button text="Click here" @click="showToast" />
-    <h1>{{ address }}</h1>
+    <h1 class="text-3xl font-bold underline font-display">{{ address }}</h1>
   </div>
 </template>
 

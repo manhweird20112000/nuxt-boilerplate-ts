@@ -2,6 +2,7 @@ import * as fs from 'node:fs'
 import path from 'node:path'
 
 import { createResolver } from '@nuxt/kit'
+import tailwindcss from '@tailwindcss/vite'
 import ElementPlus from 'unplugin-element-plus/vite'
 const { resolve } = createResolver(import.meta.url)
 
@@ -24,7 +25,7 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'preload', href: 'https://fonts.googleapis.com' },
         { rel: 'preload', href: 'https://fonts.gstatic.com' },
-        { href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap', rel: 'stylesheet', crossorigin: 'anonymous' }
+        { href: 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap', rel: 'stylesheet', crossorigin: 'anonymous' }
       ]
     }
   },
@@ -34,14 +35,7 @@ export default defineNuxtConfig({
   // work when ssr: false
   spaLoadingTemplate: './app-loading.html',
 
-  css: ['./assets/styles/index.scss'],
-
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {}
-    }
-  },
+  css: ['./assets/styles/index.scss', './assets/styles/tailwind.css'],
 
   modules: ['@pinia/nuxt', '@nuxtjs/sitemap', '@element-plus/nuxt', '@nuxtjs/robots', '@nuxtjs/i18n'],
   elementPlus: {
@@ -63,6 +57,7 @@ export default defineNuxtConfig({
     },
 
     plugins: [
+      tailwindcss(),
       ElementPlus({
         useSource: true
       })
