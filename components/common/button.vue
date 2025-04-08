@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import _ from 'lodash'
 interface Props {
   text?: string
   disabled?: boolean
@@ -19,11 +20,26 @@ withDefaults(defineProps<Props>(), {
   loadingFullScreen: false,
   plain: false
 })
+
+const emits = defineEmits<{ submit: [] }>()
+
 const slots: any = useSlots()
+
+const isDisabledDebounce = ref<boolean>(false)
+
+const onClick = () => {
+  isDisabledDebounce.value = true
+  onClickDebounce()
+}
+
+const onClickDebounce = _.debounce(() => {
+  emits('submit')
+  isDisabledDebounce.value = false
+}, 500)
 </script>
 
 <template>
-  <el-button v-loading.fullscreen.lock="loadingFullScreen" :type :loading :disabled :round :circle>
+  <el-button v-loading.fullscreen.lock="loadingFullScreen" :type :loading :disabled="isDisabledDebounce || disabled || loading" :round :circle @click="onClick">
     <slot v-if="slots['text']" name="text" />
     <template v-else>{{ text }}</template>
     <template v-if="slots['loading']" #loading>

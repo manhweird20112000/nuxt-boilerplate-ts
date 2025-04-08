@@ -1,3 +1,8 @@
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+
+dayjs.extend(utc)
+
 class FormatterService {
   formatCoin(val: number, digit = 2) {
     const fixFormat = Math.pow(10, digit)
@@ -30,6 +35,10 @@ class FormatterService {
       default:
         return val.substring(0, max)
     }
+  }
+
+  timeLocal(val: string) {
+    return dayjs.utc(val, 'YYYY-MM-DD HH:mm:ss').local().format('YYYY/MM/DD HH:mm:ss')
   }
 }
 

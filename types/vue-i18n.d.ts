@@ -1,6 +1,6 @@
 import '@vue/runtime-core'
 
-import type jp from '@/lang/jp.json'
+import type jp from '~/i18n/locales/jp.json'
 
 type Translations = typeof jp
 

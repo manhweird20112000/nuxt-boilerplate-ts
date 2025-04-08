@@ -1,5 +1,5 @@
-import * as fs from 'node:fs'
-import path from 'node:path'
+import * as fs from 'fs'
+import path from 'path'
 
 import { createResolver } from '@nuxt/kit'
 import tailwindcss from '@tailwindcss/vite'
@@ -25,7 +25,11 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'preload', href: 'https://fonts.googleapis.com' },
         { rel: 'preload', href: 'https://fonts.gstatic.com' },
-        { href: 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap', rel: 'stylesheet', crossorigin: 'anonymous' }
+        {
+          href: 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap',
+          rel: 'stylesheet',
+          crossorigin: 'anonymous'
+        }
       ]
     }
   },
@@ -41,6 +45,7 @@ export default defineNuxtConfig({
   elementPlus: {
     importStyle: 'scss'
   },
+
   vite: {
     resolve: {
       alias: {
@@ -61,16 +66,16 @@ export default defineNuxtConfig({
       ElementPlus({
         useSource: true
       })
-    ]
-    // server: {
-    //   proxy: {
-    //     '/api': {
-    //       target: process.env.VITE_API_URL,
-    //       changeOrigin: true,
-    //       rewrite: (path: string) => path.replace(/^\/api/, '')
-    //     }
-    //   }
-    // }
+    ],
+    server: {
+      proxy: {
+        '/api': {
+          target: process.env.VITE_API_URL,
+          changeOrigin: true,
+          rewrite: (path: string) => path.replace(/^\/api/, '')
+        }
+      }
+    }
   },
 
   imports: {
@@ -94,9 +99,17 @@ export default defineNuxtConfig({
   },
 
   i18n: {
-    vueI18n: './infra/i18n/index.ts'
+    defaultLocale: 'jp',
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'jp', name: 'Japanese', file: 'jp.json' }
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root'
+    }
   },
-
   compatibilityDate: '2024-11-04',
   hooks: {
     ready() {
