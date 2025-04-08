@@ -3,6 +3,7 @@ import { EKeyStorage } from '#shared/common/contanst'
 import { HttpService } from '~/shared/utils/api'
 
 const showToast = async () => {
+  Toast.success({ message: 'CALL API...' })
   const resp = await HttpService.get('todos/1', {})
   console.log(resp)
 }
@@ -18,7 +19,7 @@ const address = computed(() => {
 
 <template>
   <div>
-    <common-button text="Click here" />
+    <common-button text="Click here" @click="showToast" />
     <h1>{{ address }}</h1>
   </div>
 </template>
