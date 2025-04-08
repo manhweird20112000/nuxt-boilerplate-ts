@@ -1,55 +1,45 @@
-import axios, { type AxiosError, type AxiosInstance, type AxiosResponse } from 'axios'
+import type { AxiosResponse } from 'axios'
+import axios, { type AxiosInstance } from 'axios'
 
-let options: any
-const instance: AxiosInstance = axios.create({
-  baseURL: import.meta.env['VITE_API_URL'] || ''
-})
+import { EKeyStorage } from '#shared/common/contanst'
 
-instance.interceptors.request.use(
-  (config: any) => {
-    options = config
-    // const token = getStorage(ACCESS_TOKEN)
-    const token = ''
-    if (token) {
-      config.headers.Authorization = 'Bearer ' + token
-    }
-    if (config.isDownloadFile) {
-      config.responseType = 'blob'
-    }
+class HttpModule {
+  private readonly instance: AxiosInstance
 
-    if (config.isUploadFile) {
-      config.headers['Content-Type'] = 'multipart/form-data'
-    }
+  constructor(baseURL: string, timeout: number = 10000) {
+    this.instance = axios.create({
+      baseURL,
+      timeout
+    })
 
-    return config
-  },
-  (error: AxiosError) => {
-    throw error
+    this.instance.interceptors.request.use(
+      (config) => {
+        const token = StorageData.getStorage(EKeyStorage.auth)
+
+        if (token) {
+          config.headers.Authorization = 'Bearer ' + token
+        }
+
+        return config
+      },
+      (error) => Promise.reject(error)
+    )
+
+    this.instance.interceptors.response.use(
+      (response: AxiosResponse) => {
+        if (response?.data?.status_code !== 200) {
+          Toast.error({ message: response?.data?.message })
+        }
+
+        return response?.data
+      },
+      (error) => Promise.reject(error)
+    )
   }
-)
 
-instance.interceptors.response.use(
-  (response: AxiosResponse) => {
-    if (response.data.status_code !== 200) {
-      ElMessage.error({
-        message: response.data.message || '',
-        duration: 2000
-      })
-
-      if (response.data.status_code === 400 && options['method'].toLowerCase() === 'get' && !response.data.data) {
-        throw showError({ statusCode: 404, statusMessage: 'PAGE NOT FOUND.' })
-      }
-    } else if (options['isNotify']) {
-      ElMessage.success({
-        message: response.data.message || '',
-        duration: 2000
-      })
-    }
-    return response
-  },
-  (error: AxiosError) => {
-    throw error
+  getInstance(): AxiosInstance {
+    return this.instance
   }
-)
+}
 
-export default instance
+export default HttpModule

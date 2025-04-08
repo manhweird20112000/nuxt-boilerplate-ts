@@ -8,25 +8,43 @@ interface Props {
   color?: string
   width?: number
   height?: number
+  type?: 'stroke' | 'fill' | string
 }
 
 withDefaults(defineProps<Props>(), {
-  color: 'black',
+  color: '',
   width: 24,
-  height: 24
+  height: 24,
+  type: ''
 })
 </script>
 
 <template>
-  <span class="common-icon" :style="`--common-icon-color: ${color}; --common-icon-width: ${width}px; --common-icon-height: ${height}px`" v-html="icons[name]">
+  <span
+    :class="['common-icon', type]"
+    :style="`--common-icon-type: ${type} ;--common-icon-color: ${color}; --common-icon-width: ${width}px; --common-icon-height: ${height}px`"
+    v-html="icons[name]"
+  >
   </span>
 </template>
 
 <style lang="scss">
 .common-icon {
   max-width: fit-content;
+
+  &.stroke {
+    & > svg {
+      stroke: var(--common-icon-color);
+    }
+  }
+
+  &.fill {
+    & > svg {
+      fill: var(--common-icon-color);
+    }
+  }
+
   & > svg {
-    stroke: var(--common-icon-color);
     width: var(--common-icon-width);
     height: var(--common-icon-height);
   }

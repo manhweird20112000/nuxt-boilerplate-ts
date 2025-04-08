@@ -28,33 +28,10 @@ export default defineNuxtConfig({
     }
   },
 
-  ssr: true,
+  ssr: false,
 
   // work when ssr: false
   spaLoadingTemplate: './app-loading.html',
-
-  components: [
-    {
-      prefix: 'common',
-      global: true,
-      path: resolve('./components/common')
-    },
-    {
-      prefix: 'layout',
-      global: true,
-      path: resolve('./components/layouts')
-    },
-    {
-      prefix: 'page',
-      global: true,
-      path: resolve('./components/pages')
-    },
-    {
-      prefix: 'partial',
-      global: true,
-      path: resolve('./components/partials')
-    }
-  ],
 
   css: ['./assets/styles/index.scss'],
 
@@ -92,6 +69,13 @@ export default defineNuxtConfig({
     // }
   },
 
+  imports: {
+    autoImport: true,
+    global: true,
+    scan: true,
+    dirs: ['shared/utils']
+  },
+
   typescript: {
     typeCheck: true,
     strict: true,
@@ -112,7 +96,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-04',
   hooks: {
     ready() {
-      console.log('GENERATE FILE ICON MAP')
       const data: Record<string, string> = {}
       const pathFolderIcon = path.join(process.cwd(), 'public', 'icons')
       if (!fs.existsSync(pathFolderIcon)) {

@@ -1,13 +1,25 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { EKeyStorage } from '#shared/common/contanst'
+import { HttpService } from '~/shared/utils/api'
+
+const showToast = async () => {
+  const resp = await HttpService.get('todos/1', {})
+  console.log(resp)
+}
+
+const setToken = () => {
+  StorageData.setStorage(EKeyStorage.auth, 'HI')
+}
+
+const address = computed(() => {
+  return Formatter.ellipsis('0x786533b400807Dc9664F2dEEF5bC974E9F85294B', 5, 'mesial')
+})
+</script>
 
 <template>
   <div>
-    PAGE HOME <button>adca</button>
-    <div class="grid grid-cols-2 gap-2">
-      <common-icon name="language" color="red" />
-      <common-icon name="language" color="deeppink" />
-    </div>
-    <div class="w-[50vw] h-[200px]"></div>
+    <common-button text="Click here" />
+    <h1>{{ address }}</h1>
   </div>
 </template>
 
