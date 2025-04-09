@@ -41,6 +41,7 @@ nuxt-3-base-v2/
 ├── types/               # TypeScript type definitions
 ├── .env                 # Environment variables
 ├── .env.example         # Example environment variables
+├── app-loading.html     # This file runs when SSR is set to false and is executed on the first page load.
 ├── app.vue              # Main application entry
 ├── nuxt.config.ts       # Nuxt configuration
 └── tsconfig.json        # TypeScript configuration
@@ -50,7 +51,7 @@ nuxt-3-base-v2/
 
 ### Prerequisites
 
-- Node.js (v16.x or later)
+- Node.js (v18.x or later)
 - Yarn or npm
 
 ### Installation
@@ -88,7 +89,7 @@ yarn dev
 npm run dev
 ```
 
-The application will be available at http://localhost:8000.
+The application will be available at http://localhost:3000.
 
 ## Building for Production
 
