@@ -24,7 +24,7 @@ nuxt-3-base-v2/
 ├── assets/              # Static assets like images, fonts, and styles
 │   ├── styles/
 │   ├──── element/
-│   ├───────── index.scss # Custom theme Element Plus
+│   │     ├──── index.scss # Custom theme Element Plus
 │   ├──── tailwind.css   # Define & Customize tailwindcss
 ├── components/          # Vue components
 │   ├── common/          # Reusable common components
@@ -138,37 +138,6 @@ The project uses Pinia for state management. Here's how to use the stores:
 
 - **UserStore**: Handles user authentication and profile data
 - **UiStore**: Manages UI state like theme, sidebar collapse, and loading indicators
-
-### Using Stores in Components
-
-```typescript
-<script setup lang="ts">
-import { useUserStore, useUiStore } from '~/stores';
-
-// Access user store
-const userStore = useUserStore();
-
-// Access UI store
-const uiStore = useUiStore();
-
-// Login example
-const handleLogin = async () => {
-  const success = await userStore.login({
-    email: 'user@example.com',
-    password: 'password'
-  });
-
-  if (success) {
-    // Redirect or show success message
-  }
-};
-
-// Toggle dark mode example
-const toggleTheme = () => {
-  uiStore.toggleDarkMode();
-};
-</script>
-```
 
 ### Creating New Stores
 

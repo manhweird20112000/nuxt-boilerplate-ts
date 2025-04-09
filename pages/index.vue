@@ -29,9 +29,8 @@ const infiniteScroll = () => {
     <h1 class="text-3xl font-bold underline font-display">{{ translate('welcome') }} {{ name }}</h1>
 
     <common-scroll-infinite
-      :paginate="{ total: 100, per_page: 10, page: 1 }"
       list-class-custom="h-[400px] overflow-y-auto"
-      :data="[...Array(10).keys()].map((item) => ({ id: item }))"
+      :data="[...Array(1000).keys()].map((item) => ({ id: item }))"
       key-extract="id"
       :item-render="PartialsItemList"
       @infinite="infiniteScroll"

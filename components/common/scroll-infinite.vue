@@ -41,7 +41,9 @@ const paginateData = ref<PaginationData>(props.paginate || { total: 100, per_pag
  * Handle infinite scrolling event with debounce
  */
 const handleInfiniteLoad = debounce(() => {
-  emits('infinite')
+  if (!props.paginate || slots.paginate) {
+    emits('infinite')
+  }
 }, 500)
 
 /**
@@ -63,7 +65,8 @@ function handlePaginateChange(page: number, pageSize: number): void {
       @tobottom="handleInfiniteLoad"
     >
       <template v-if="loading" #footer>
-        <div>Loading...</div>
+        <slot v-if="slots.footer" name="footer" />
+        <div v-else>Loading...</div>
       </template>
     </virtual-list>
 
