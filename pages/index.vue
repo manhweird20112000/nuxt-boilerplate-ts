@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { CommonButton } from '#components'
-import { EKeyStorage } from '#shared/common/contanst'
 import PartialsItemList from '~/components/partials/item-list.vue'
 
 const { translate } = useTranslate()
@@ -13,9 +12,6 @@ const showToast = async () => {
   console.log(resp)
 }
 
-const setToken = () => {
-  StorageData.setStorage(EKeyStorage.auth, 'HI')
-}
 
 const address = computed(() => {
   return Formatter.ellipsis('0x786533b400807Dc9664F2dEEF5bC974E9F85294B', 5, 'mesial')

@@ -1,40 +1,81 @@
-import { type AxiosInstance, type AxiosResponse } from 'axios'
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 
 import HttpModule from '~/infra/api/module'
 
-export abstract class IHttpAdapter<T = object> {
-  abstract client: T
-  abstract get<Q = object, R = AxiosResponse>(url: string, params?: Q): Promise<R>
-  abstract post<Q = object, R = AxiosResponse>(url: string, dto?: Q): Promise<R>
-  abstract put<Q = object, R = AxiosResponse>(url: string, dto?: Q): Promise<R>
-  abstract patch<Q = object, R = AxiosResponse>(url: string, dto?: Q): Promise<R>
-  abstract delete<R = AxiosResponse>(url: string): Promise<R>
-}
-class HttpAxiosService implements IHttpAdapter<AxiosInstance> {
-  client: AxiosInstance
+/**
+ * Interface for HTTP adapter with common HTTP methods
+ */
+export abstract class IHttpAdapter<T = unknown> {
+  abstract readonly client: T
 
-  constructor(url = import.meta.env['VITE_API_URL'] || '') {
-    this.client = new HttpModule(url).getInstance()
+  abstract get<TParams = unknown, TResponse = AxiosResponse>(url: string, params?: TParams): Promise<TResponse>
+
+  abstract post<TData = unknown, TResponse = AxiosResponse>(url: string, data?: TData, options?: AxiosRequestConfig): Promise<TResponse>
+
+  abstract put<TData = unknown, TResponse = AxiosResponse>(url: string, data?: TData): Promise<TResponse>
+
+  abstract patch<TData = unknown, TResponse = AxiosResponse>(url: string, data?: TData): Promise<TResponse>
+
+  abstract delete<TResponse = AxiosResponse>(url: string): Promise<TResponse>
+}
+
+/**
+ * Axios implementation of the HTTP adapter interface
+ */
+class HttpAxiosService implements IHttpAdapter<AxiosInstance> {
+  readonly client: AxiosInstance
+
+  constructor(baseUrl = import.meta.env['VITE_API_URL'] || '') {
+    this.client = new HttpModule(baseUrl).getInstance()
   }
 
-  get<Q = object, R = AxiosResponse>(url: string, params?: Q): Promise<R> {
+  /**
+   * Makes a GET request
+   * @param url - Endpoint URL
+   * @param params - Query parameters
+   * @returns Promise with the response
+   */
+  get<TParams = unknown, TResponse = AxiosResponse>(url: string, params?: TParams): Promise<TResponse> {
     return this.client.get(url, { params })
   }
 
-  delete<R = AxiosResponse>(url: string): Promise<R> {
+  /**
+   * Makes a DELETE request
+   * @param url - Endpoint URL
+   * @returns Promise with the response
+   */
+  delete<TResponse = AxiosResponse>(url: string): Promise<TResponse> {
     return this.client.delete(url)
   }
 
-  patch<Q = object, R = AxiosResponse>(url: string, dto?: Q): Promise<R> {
-    return this.client.patch(url, dto)
+  /**
+   * Makes a PATCH request
+   * @param url - Endpoint URL
+   * @param data - Request payload
+   * @returns Promise with the response
+   */
+  patch<TData = unknown, TResponse = AxiosResponse>(url: string, data?: TData): Promise<TResponse> {
+    return this.client.patch(url, data)
   }
 
-  post<Q = object, R = AxiosResponse>(url: string, dto?: Q): Promise<R> {
-    return this.client.post(url, dto)
+  /**
+   * Makes a POST request
+   * @param url - Endpoint URL
+   * @param data - Request payload
+   * @returns Promise with the response
+   */
+  post<TData = unknown, TResponse = AxiosResponse>(url: string, data?: TData, options?: AxiosRequestConfig): Promise<TResponse> {
+    return this.client.post(url, data, options)
   }
 
-  put<Q = object, R = AxiosResponse>(url: string, dto?: Q): Promise<R> {
-    return this.client.put(url, dto)
+  /**
+   * Makes a PUT request
+   * @param url - Endpoint URL
+   * @param data - Request payload
+   * @returns Promise with the response
+   */
+  put<TData = unknown, TResponse = AxiosResponse>(url: string, data?: TData): Promise<TResponse> {
+    return this.client.put(url, data)
   }
 }
 

@@ -1,30 +1,53 @@
 <script setup lang="ts">
-import _ from 'lodash'
+import type { Component } from 'vue'
+
+import { debounce } from 'lodash-es'
 import VirtualList from 'vue3-virtual-scroll-list'
 
-interface Props<T = object> {
+interface PaginationData {
+  total: number
+  per_page: number
+  page: number
+}
+
+interface ScrollInfiniteProps<T = Record<string, any>> {
   listClassCustom?: string
   paginateClass?: string
   loading?: boolean
   data: T[]
   keyExtract: keyof T | string
   itemRender: Component
-  paginate?: { total: number; per_page: number; page: number }
+  paginate?: PaginationData
   pageSizes?: number[]
 }
 
-const props = withDefaults(defineProps<Props>(), { loading: false, listClassCustom: '', paginateClass: '', pageSizes: () => [10, 20, 50, 100] })
-const emits = defineEmits<{ infinite: []; paginate: [{ page: number; pageSize: number }] }>()
+const props = withDefaults(defineProps<ScrollInfiniteProps>(), {
+  loading: false,
+  listClassCustom: '',
+  paginateClass: '',
+  pageSizes: () => [10, 20, 50, 100]
+})
 
-const slots: any = useSlots()
+const emits = defineEmits<{
+  infinite: []
+  paginate: [{ page: number; pageSize: number }]
+}>()
 
-const paginateData = ref<Required<Props>['paginate']>(props.paginate || { total: 100, per_page: 10, page: 1 })
+const slots = useSlots()
 
-const infiniteLoad = _.debounce(() => {
+const paginateData = ref<PaginationData>(props.paginate || { total: 100, per_page: 10, page: 1 })
+
+/**
+ * Handle infinite scrolling event with debounce
+ */
+const handleInfiniteLoad = debounce(() => {
   emits('infinite')
 }, 500)
 
-const paginateChange = (page: number, pageSize: number) => {
+/**
+ * Handle pagination change events
+ */
+function handlePaginateChange(page: number, pageSize: number): void {
   emits('paginate', { page, pageSize })
 }
 </script>
@@ -32,28 +55,28 @@ const paginateChange = (page: number, pageSize: number) => {
 <template>
   <div class="grid grid-cols-1 gap-2">
     <virtual-list
-      v-loading="(paginate || slots['paginate']) && loading"
+      v-loading="(paginate || slots.paginate) && loading"
       :class="listClassCustom"
       :data-component="itemRender"
       :data-sources="data"
       :data-key="keyExtract"
-      @tobottom="infiniteLoad"
+      @tobottom="handleInfiniteLoad"
     >
       <template v-if="loading" #footer>
         <div>Loading...</div>
       </template>
     </virtual-list>
 
-    <div :class="paginateClass" v-if="paginate || slots['paginate']">
+    <div v-if="paginate || slots.paginate" :class="paginateClass">
       <el-pagination
-        v-if="!slots['paginate']"
+        v-if="!slots.paginate"
         v-model:current-page="paginateData.page"
         v-model:page-size="paginateData.per_page"
         background
         :page-sizes="pageSizes"
         layout="sizes, prev, pager, next"
         :total="paginateData.total"
-        @change="paginateChange"
+        @change="handlePaginateChange"
       />
 
       <slot v-else name="paginate" />

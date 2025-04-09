@@ -3,42 +3,74 @@ import utc from 'dayjs/plugin/utc'
 
 dayjs.extend(utc)
 
+/**
+ * Service for formatting various data types
+ */
 class FormatterService {
-  formatCoin(val: number, digit = 2) {
-    const fixFormat = Math.pow(10, digit)
-    const valueFormat = Math.floor(val * fixFormat) / fixFormat
+  /**
+   * Formats a number as a coin value with appropriate decimals
+   * @param value - The number to format
+   * @param digits - Number of decimal places to keep
+   * @returns Formatted string representation of the number
+   */
+  formatCoin(value: number, digits = 2): string {
+    if (value === undefined || value === null || isNaN(value)) {
+      return '0'
+    }
 
-    return val ?
-        new Intl.NumberFormat('en-US', {
-          maximumFractionDigits: 6
-        }).format(val)
-      : val
+    return new Intl.NumberFormat('en-US', {
+      maximumFractionDigits: 6
+    }).format(value)
   }
 
+  /**
+   * Converts an error object with arrays to a simplified format
+   * @param data - Record with error arrays
+   * @returns Record with first error message for each key
+   */
   formatErrors(data: Record<string, string[]>): Record<string, string> {
-    const params: Record<string, any> = {}
+    const result: Record<string, string> = {}
     for (const key in data) {
-      if (data[key]) {
-        const errors: string[] = data[key] || []
-        params[key] = errors.length > 0 ? errors[0] : ''
+      const errors: string[] = data[key] || []
+      if (errors.length > 0) {
+        result[key] = errors[0]
       }
     }
-    return params
+    return result
   }
 
-  ellipsis(val: string, max = 5, type: 'tail' | 'mesial' = 'tail'): string {
+  /**
+   * Truncates a string and adds ellipsis
+   * @param value - The string to truncate
+   * @param maxLength - Maximum characters to keep
+   * @param type - Where to apply the truncation
+   * @returns Truncated string with ellipsis
+   */
+  ellipsis(value: string, maxLength = 5, type: 'tail' | 'mesial' = 'tail'): string {
+    if (!value) {
+      return ''
+    }
+
     switch (type) {
       case 'tail':
-        return val.substring(0, max) + '...'
+        return value.length > maxLength ? value.substring(0, maxLength) + '...' : value
       case 'mesial':
-        return val.substring(0, max) + '...' + val.slice(-max)
+        return value.length > maxLength * 2 ? value.substring(0, maxLength) + '...' + value.slice(-maxLength) : value
       default:
-        return val.substring(0, max)
+        return value.substring(0, maxLength)
     }
   }
 
-  timeLocal(val: string) {
-    return dayjs.utc(val, 'YYYY-MM-DD HH:mm:ss').local().format('YYYY/MM/DD HH:mm:ss')
+  /**
+   * Converts UTC time to local time format
+   * @param value - UTC time string
+   * @returns Formatted local time string
+   */
+  timeLocal(value: string): string {
+    if (!value) {
+      return ''
+    }
+    return dayjs.utc(value, 'YYYY-MM-DD HH:mm:ss').local().format('YYYY/MM/DD HH:mm:ss')
   }
 }
 
