@@ -22,10 +22,10 @@ nuxt-3-base-v2/
 ├── .nuxt/               # Nuxt build directory
 ├── .output/             # Nuxt output directory
 ├── assets/              # Static assets like images, fonts, and styles
-│   ├── styles/          
+│   ├── styles/
 │   ├──── element/
 │   ├───────── index.scss # Custom theme Element Plus
-│   ├──── tailwind.css   # Define & Customize tailwindcss        
+│   ├──── tailwind.css   # Define & Customize tailwindcss
 ├── components/          # Vue components
 │   ├── common/          # Reusable common components
 │   ├── layouts/         # Layout-specific components
@@ -42,6 +42,10 @@ nuxt-3-base-v2/
 ├── shared/              # Shared utilities and common code
 │   ├── common/          # Common shared code
 │   └── utils/           # Utility functions
+├── stores/              # Pinia state management stores
+│   ├── index.ts         # Exports all stores for easier imports
+│   ├── user.ts          # User authentication and profile state
+│   └── ui.ts            # UI state (theme, sidebar, loading, etc.)
 ├── types/               # TypeScript type definitions
 ├── .env                 # Environment variables
 ├── .env.example         # Example environment variables
@@ -125,6 +129,54 @@ pm2 start ecosystem.config.js
 - Modify styles in `assets/styles/`
 - Configure API endpoints in `shared/utils/api.ts`
 - Add custom icons to `public/icons/`
+
+## State Management with Pinia
+
+The project uses Pinia for state management. Here's how to use the stores:
+
+### Available Stores
+
+- **UserStore**: Handles user authentication and profile data
+- **UiStore**: Manages UI state like theme, sidebar collapse, and loading indicators
+
+### Using Stores in Components
+
+```typescript
+<script setup lang="ts">
+import { useUserStore, useUiStore } from '~/stores';
+
+// Access user store
+const userStore = useUserStore();
+
+// Access UI store
+const uiStore = useUiStore();
+
+// Login example
+const handleLogin = async () => {
+  const success = await userStore.login({
+    email: 'user@example.com',
+    password: 'password'
+  });
+
+  if (success) {
+    // Redirect or show success message
+  }
+};
+
+// Toggle dark mode example
+const toggleTheme = () => {
+  uiStore.toggleDarkMode();
+};
+</script>
+```
+
+### Creating New Stores
+
+To add a new store:
+
+1. Create a new file in the `stores` directory (e.g., `stores/cart.ts`)
+2. Define your store using `defineStore`
+3. Export the store from `stores/index.ts`
 
 ## Internationalization
 
