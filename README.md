@@ -10,6 +10,7 @@ A modern, feature-rich Nuxt 3 base project with TypeScript support, internationa
 - **TailwindCSS**: Utility-first CSS framework for rapid UI development
 - **Internationalization**: Multi-language support with @nuxtjs/i18n
 - **SEO Optimized**: Includes sitemap and robots.txt modules
+- **Comprehensive Metadata**: Full set of metadata for SEO and social sharing, with easy page-specific customization
 - **Pinia**: State management with Pinia store
 - **GSAP**: Animation library for creating engaging user experiences
 - **Axios**: HTTP client for API requests
@@ -37,7 +38,10 @@ nuxt-3-base-v2/
 ├── infra/               # Infrastructure configuration
 ├── layouts/             # Nuxt layout templates
 ├── pages/               # Application pages
+├── plugins/             # Nuxt plugins
 ├── public/              # Static files served at root level
+│   ├── images/          # Image assets for metadata
+│   └── site.webmanifest # Web app manifest file
 ├── server/              # Server-side code
 ├── shared/              # Shared utilities and common code
 │   ├── common/          # Common shared code
@@ -150,6 +154,22 @@ To add a new store:
 ## Internationalization
 
 The project supports multiple languages. Add or modify language files in the `i18n/` directory.
+
+## Metadata and SEO
+
+The project includes comprehensive metadata support for SEO and social sharing.
+
+### Default Metadata
+
+Default metadata is configured in `nuxt.config.ts` and includes:
+
+- Basic SEO metadata (title, description, keywords)
+- Open Graph / Facebook metadata
+- Twitter Card metadata
+- Apple specific metadata
+- Favicons and web app manifest
+
+For more advanced usage, see the [metadata documentation](docs/metadata.md).
 
 ## License
 
