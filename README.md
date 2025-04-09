@@ -22,6 +22,10 @@ nuxt-3-base-v2/
 ├── .nuxt/               # Nuxt build directory
 ├── .output/             # Nuxt output directory
 ├── assets/              # Static assets like images, fonts, and styles
+│   ├── styles/          
+│   ├──── element/
+│   ├───────── index.scss # Custom theme Element Plus
+│   ├──── tailwind.css   # Define & Customize tailwindcss        
 ├── components/          # Vue components
 │   ├── common/          # Reusable common components
 │   ├── layouts/         # Layout-specific components
@@ -41,6 +45,7 @@ nuxt-3-base-v2/
 ├── types/               # TypeScript type definitions
 ├── .env                 # Environment variables
 ├── .env.example         # Example environment variables
+├── app-loading.html     # This file runs when SSR is set to false and is executed on the first page load.
 ├── app.vue              # Main application entry
 ├── nuxt.config.ts       # Nuxt configuration
 └── tsconfig.json        # TypeScript configuration
@@ -50,7 +55,7 @@ nuxt-3-base-v2/
 
 ### Prerequisites
 
-- Node.js (v16.x or later)
+- Node.js (v18.x or later)
 - Yarn or npm
 
 ### Installation
@@ -88,7 +93,7 @@ yarn dev
 npm run dev
 ```
 
-The application will be available at http://localhost:8000.
+The application will be available at http://localhost:3000.
 
 ## Building for Production
 
