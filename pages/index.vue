@@ -25,10 +25,12 @@ const infiniteScroll = () => {
 <template>
   <div>
     <common-button text="Click here" @click="showToast" />
+    <nuxt-link to="/posts">Go to Posts </nuxt-link>
     <h1 class="text-3xl font-bold underline font-display">{{ address }}</h1>
     <h1 class="text-3xl font-bold underline font-display">{{ translate('welcome') }} {{ name }}</h1>
 
-    <common-scroll-infinite
+    <client-only>
+      <common-scroll-infinite
       list-class-custom="h-[400px] overflow-y-auto"
       :data="[...Array(1000).keys()].map((item) => ({ id: item }))"
       key-extract="id"
@@ -36,6 +38,7 @@ const infiniteScroll = () => {
       @infinite="infiniteScroll"
     >
     </common-scroll-infinite>
+    </client-only>
   </div>
 </template>
 

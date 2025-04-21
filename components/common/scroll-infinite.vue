@@ -19,23 +19,25 @@ interface ScrollInfiniteProps<T = Record<string, any>> {
   itemRender: Component
   paginate?: PaginationData
   pageSizes?: number[]
+  vitualItemRender?: number
 }
 
 const props = withDefaults(defineProps<ScrollInfiniteProps>(), {
   loading: false,
   listClassCustom: '',
   paginateClass: '',
-  pageSizes: () => [10, 20, 50, 100]
+  pageSizes: () => [10, 20, 50, 100],
+  vitualItemRender: 100
 })
 
 const emits = defineEmits<{
   infinite: []
-  paginate: [{ page: number; pageSize: number }]
+  paginate: [{ page: number; pageSize: number }],
 }>()
 
 const slots = useSlots()
 
-const paginateData = ref<PaginationData>(props.paginate || { total: 100, per_page: 10, page: 1 })
+const paginateData = ref<PaginationData>(props.paginate || { total: 100, per_page: 10, page: 1,  })
 
 /**
  * Handle infinite scrolling event with debounce
@@ -61,6 +63,8 @@ function handlePaginateChange(page: number, pageSize: number): void {
       :class="listClassCustom"
       :data-component="itemRender"
       :data-sources="data"
+      :estimate-size="100"
+      :keeps="vitualItemRender"
       :data-key="keyExtract"
       @tobottom="handleInfiniteLoad"
     >
