@@ -65,7 +65,7 @@ export default defineNuxtConfig({
     }
   },
 
-  ssr: false,
+  ssr: true,
 
   // work when ssr: false
   spaLoadingTemplate: './app-loading.html',
@@ -76,7 +76,6 @@ export default defineNuxtConfig({
   elementPlus: {
     importStyle: 'scss'
   },
-
   vite: {
     resolve: {
       alias: {

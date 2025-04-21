@@ -13,8 +13,8 @@ class HttpModule {
 
     this.instance.interceptors.request.use(
       (config) => {
-        const token = StorageData.getStorage(StorageKey.AUTH)
-
+        // const token = StorageData.getStorage(StorageKey.AUTH)
+        const token = ''
         if (token) {
           config.headers.Authorization = 'Bearer ' + token
         }
@@ -26,9 +26,9 @@ class HttpModule {
 
     this.instance.interceptors.response.use(
       (response: AxiosResponse) => {
-        if (response?.data?.status_code !== 200) {
-          Toast.error({ message: response?.data?.message })
-        }
+        // if (response?.data?.status_code !== 200) {
+        //   Toast.error({ message: response?.data?.message })
+        // }
 
         return response?.data
       },
