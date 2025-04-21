@@ -11,6 +11,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
     "@element-plus/nuxt": "^1.0.9",
     "@nuxtjs/i18n": "^9.5.3",
     "@nuxtjs/robots": "^3.0.0",
