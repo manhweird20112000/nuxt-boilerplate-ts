@@ -9,16 +9,13 @@ const name = ref<string>('')
 const showToast = async () => {
   Toast.success({ message: 'CALL API...' })
   const resp = await HttpService.get('todos/1', {})
-  console.log(resp)
 }
 
 const address = computed(() => {
   return Formatter.ellipsis('0x786533b400807Dc9664F2dEEF5bC974E9F85294B', 5, 'mesial')
 })
 
-const infiniteScroll = () => {
-  console.log('SCROLL ')
-}
+const infiniteScroll = () => {}
 </script>
 
 <template>

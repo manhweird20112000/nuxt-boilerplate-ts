@@ -19,7 +19,7 @@ class FormatterService {
     }
 
     return new Intl.NumberFormat('en-US', {
-      maximumFractionDigits: 6
+      maximumFractionDigits: digits
     }).format(value)
   }
 
