@@ -6,9 +6,9 @@ const { translate } = useTranslate()
 const image = useAssets('images/demo.jpg')
 const name = ref<string>('')
 
-const showToast = async () => {
-  Toast.success({ message: 'CALL API...' })
-  const resp = await HttpService.get('todos/1', {})
+const showToast = () => {
+  // Toast.success({ message: 'CALL API...' })
+  // const resp = await HttpService.get('todos/1', {})
 }
 
 const address = computed(() => {

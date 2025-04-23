@@ -2,6 +2,8 @@ import axios, { type AxiosError, type AxiosInstance } from 'axios'
 
 import type { AxiosResponse } from 'axios'
 
+import { StorageKey } from '~/shared/common/constants'
+
 class HttpModule {
   private readonly instance: AxiosInstance
 
@@ -13,8 +15,8 @@ class HttpModule {
 
     this.instance.interceptors.request.use(
       (config) => {
-        // const token = StorageData.getStorage(StorageKey.AUTH)
-        const token = ''
+        const token = StorageData.getStorage(StorageKey.AUTH)
+        // const token = ''
         if (token) {
           config.headers.Authorization = 'Bearer ' + token
         }
