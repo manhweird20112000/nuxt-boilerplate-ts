@@ -55,7 +55,9 @@ class FormatterService {
       case 'tail':
         return value.length > maxLength ? value.substring(0, maxLength) + '...' : value
       case 'mesial':
-        return value.length > maxLength * 2 ? value.substring(0, maxLength) + '...' + value.slice(-maxLength) : value
+        return value.length > maxLength * 2
+          ? value.substring(0, maxLength) + '...' + value.slice(-maxLength)
+          : value
       default:
         return value.substring(0, maxLength)
     }

@@ -26,7 +26,8 @@ const props = withDefaults(defineProps<FieldProps>(), {
   isFormatMoney: false,
   type: 'text',
   isDebounce: false,
-  debounceTime: 500
+  debounceTime: 500,
+  formRef: undefined
 })
 
 const emits = defineEmits<{
@@ -60,7 +61,12 @@ function formatBalanceInput(value: string): string {
  * Handles comma key press for money format inputs
  */
 function handleKeyDown(event: any): any {
-  if (!input.value?.includes(',') && event.key === ',' && input.value !== '' && props.isFormatMoney) {
+  if (
+    !input.value?.includes(',') &&
+    event.key === ',' &&
+    input.value !== '' &&
+    props.isFormatMoney
+  ) {
     input.value = `${input.value}.`
   }
 }

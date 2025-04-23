@@ -1,13 +1,12 @@
 import * as fs from 'fs'
 import path from 'path'
 
-// eslint-disable-next-line import/no-unresolved
-import { createResolver } from '@nuxt/kit'
+// import { createResolver } from '@nuxt/kit'
 // eslint-disable-next-line import/no-unresolved
 import tailwindcss from '@tailwindcss/vite'
 // eslint-disable-next-line import/no-unresolved
 import ElementPlus from 'unplugin-element-plus/vite'
-const { resolve } = createResolver(import.meta.url)
+// const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -18,7 +17,10 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
       meta: [
-        { name: 'description', content: process.env['APP_DESCRIPTION'] || process.env['APP_NAME'] || '' },
+        {
+          name: 'description',
+          content: process.env['APP_DESCRIPTION'] || process.env['APP_NAME'] || ''
+        },
         { name: 'author', content: process.env['APP_AUTHOR'] || '' },
         { name: 'keywords', content: process.env['APP_KEYWORDS'] || '' },
         { name: 'format-detection', content: 'telephone=no' },
@@ -28,7 +30,10 @@ export default defineNuxtConfig({
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: process.env['APP_URL'] || '' },
         { property: 'og:title', content: process.env['APP_NAME'] || '' },
-        { property: 'og:description', content: process.env['APP_DESCRIPTION'] || process.env['APP_NAME'] || '' },
+        {
+          property: 'og:description',
+          content: process.env['APP_DESCRIPTION'] || process.env['APP_NAME'] || ''
+        },
         { property: 'og:image', content: process.env['APP_IMAGE'] || '/images/og-image.jpg' },
         { property: 'og:locale', content: 'jp' },
         { property: 'og:site_name', content: process.env['APP_NAME'] || '' },
@@ -38,7 +43,10 @@ export default defineNuxtConfig({
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:url', content: process.env['APP_URL'] || '' },
         { name: 'twitter:title', content: process.env['APP_NAME'] || '' },
-        { name: 'twitter:description', content: process.env['APP_DESCRIPTION'] || process.env['APP_NAME'] || '' },
+        {
+          name: 'twitter:description',
+          content: process.env['APP_DESCRIPTION'] || process.env['APP_NAME'] || ''
+        },
         { name: 'twitter:image', content: process.env['APP_IMAGE'] || '/images/twitter-image.jpg' },
         { name: 'twitter:creator', content: process.env['TWITTER_CREATOR'] || '' },
 
@@ -72,7 +80,13 @@ export default defineNuxtConfig({
 
   css: ['./assets/styles/index.scss', './assets/styles/tailwind.css'],
 
-  modules: ['@pinia/nuxt', '@nuxtjs/sitemap', '@element-plus/nuxt', '@nuxtjs/robots', '@nuxtjs/i18n'],
+  modules: [
+    '@pinia/nuxt',
+    '@nuxtjs/sitemap',
+    '@element-plus/nuxt',
+    '@nuxtjs/robots',
+    '@nuxtjs/i18n'
+  ],
   elementPlus: {
     importStyle: 'scss'
   },
@@ -158,7 +172,9 @@ export default defineNuxtConfig({
         const pathIcon = path.join(pathFolderIcon, icon)
         const filename: string = icon.split('.')[0]
 
-        if (!filename) return
+        if (!filename) {
+          return
+        }
 
         data[filename] = fs.readFileSync(pathIcon).toString()
       })

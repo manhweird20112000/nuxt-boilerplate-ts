@@ -1,6 +1,6 @@
+import axios, { type AxiosError, type AxiosInstance } from 'axios'
+
 import type { AxiosResponse } from 'axios'
-import axios, { type AxiosInstance } from 'axios'
-import { StorageKey } from '#shared/common/constants'
 
 class HttpModule {
   private readonly instance: AxiosInstance
@@ -21,7 +21,7 @@ class HttpModule {
 
         return config
       },
-      (error) => Promise.reject(error)
+      (error: AxiosError) => Promise.reject(error)
     )
 
     this.instance.interceptors.response.use(
@@ -32,7 +32,7 @@ class HttpModule {
 
         return response?.data
       },
-      (error) => Promise.reject(error)
+      (error: AxiosError) => Promise.reject(error)
     )
   }
 

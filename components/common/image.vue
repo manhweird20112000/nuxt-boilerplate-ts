@@ -1,3 +1,17 @@
+<script lang="ts" setup>
+import { Picture } from '@element-plus/icons-vue'
+
+interface Props {
+  src: string
+  alt: string
+  fit?: 'cover' | 'contain' | 'fill' | 'scale-down' | 'none'
+}
+
+withDefaults(defineProps<Props>(), {
+  fit: 'contain'
+})
+</script>
+
 <template>
   <el-image lazy loading="lazy" :fit :src :alt class="common-image">
     <template #error>
@@ -14,20 +28,6 @@
     </template>
   </el-image>
 </template>
-
-<script lang="ts" setup>
-import { Picture } from '@element-plus/icons-vue'
-
-interface Props {
-  src: string
-  alt: string
-  fit?: 'cover' | 'contain' | 'fill' | 'scale-down' | 'none'
-}
-
-withDefaults(defineProps<Props>(), {
-  fit: 'contain'
-})
-</script>
 
 <style lang="scss">
 .common-image {

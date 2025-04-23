@@ -1,29 +1,3 @@
-<template>
-  <el-dialog
-    v-model="model"
-    :modal-class="'common-dialog' + dialogClass"
-    :header-class="`common-dialog__header ${hiddenHeader ? 'is-hidden-header' : ''}`"
-    body-class="common-dialog__body"
-    :width
-    :align-center="center"
-    :fullscreen
-    :title
-    :show-close
-    :draggable
-    :overflow="false"
-    @close="emits('close')"
-    :close-icon="iconClose"
-  >
-    <template v-if="!slots.header" #header>
-      <slot name="header" />
-    </template>
-    <slot name="content" />
-    <template v-if="!slots.footer" #footer?>
-      <slot name="footer" />
-    </template>
-  </el-dialog>
-</template>
-
 <script lang="ts" setup>
 interface Props {
   width?: number
@@ -44,7 +18,8 @@ withDefaults(defineProps<Props>(), {
   title: '',
   width: 400,
   hiddenHeader: false,
-  dialogClass: ''
+  dialogClass: '',
+  iconClose: undefined
 })
 
 const emits = defineEmits<{ close: [] }>()
@@ -54,15 +29,41 @@ const slots: any = useSlots()
 const model = defineModel<boolean>()
 </script>
 
+<template>
+  <el-dialog
+    v-model="model"
+    :modal-class="'common-dialog' + dialogClass"
+    :header-class="`common-dialog__header ${hiddenHeader ? 'is-hidden-header' : ''}`"
+    body-class="common-dialog__body"
+    :width
+    :align-center="center"
+    :fullscreen
+    :title
+    :show-close
+    :draggable
+    :overflow="false"
+    :close-icon="iconClose"
+    @close="emits('close')"
+  >
+    <template v-if="!slots.header" #header>
+      <slot name="header" />
+    </template>
+    <slot name="content" />
+    <template v-if="!slots.footer" #footer?>
+      <slot name="footer" />
+    </template>
+  </el-dialog>
+</template>
+
 <style lang="scss">
 .common-dialog {
   padding: 16px;
 
-  & > .el-overlay-dialog{
-    & > .el-dialog{
-        background-color: transparent;
-        box-shadow: none;
-        padding: 0;
+  & > .el-overlay-dialog {
+    & > .el-dialog {
+      background-color: transparent;
+      box-shadow: none;
+      padding: 0;
     }
   }
   &__header {
@@ -74,11 +75,11 @@ const model = defineModel<boolean>()
       display: none;
     }
 
-    & > .el-dialog__headerbtn{
-        position: relative;
-        width: auto;
-        height: auto;
-        aspect-ratio: 1;
+    & > .el-dialog__headerbtn {
+      position: relative;
+      width: auto;
+      height: auto;
+      aspect-ratio: 1;
     }
   }
 }

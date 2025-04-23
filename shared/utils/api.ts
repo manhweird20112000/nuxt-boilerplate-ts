@@ -8,13 +8,26 @@ import HttpModule from '~/infra/api/module'
 export abstract class IHttpAdapter<T = unknown> {
   abstract readonly client: T
 
-  abstract get<TParams = unknown, TResponse = AxiosResponse>(url: string, params?: TParams): Promise<TResponse>
+  abstract get<TParams = unknown, TResponse = AxiosResponse>(
+    url: string,
+    params?: TParams
+  ): Promise<TResponse>
 
-  abstract post<TData = unknown, TResponse = AxiosResponse>(url: string, data?: TData, options?: AxiosRequestConfig): Promise<TResponse>
+  abstract post<TData = unknown, TResponse = AxiosResponse>(
+    url: string,
+    data?: TData,
+    options?: AxiosRequestConfig
+  ): Promise<TResponse>
 
-  abstract put<TData = unknown, TResponse = AxiosResponse>(url: string, data?: TData): Promise<TResponse>
+  abstract put<TData = unknown, TResponse = AxiosResponse>(
+    url: string,
+    data?: TData
+  ): Promise<TResponse>
 
-  abstract patch<TData = unknown, TResponse = AxiosResponse>(url: string, data?: TData): Promise<TResponse>
+  abstract patch<TData = unknown, TResponse = AxiosResponse>(
+    url: string,
+    data?: TData
+  ): Promise<TResponse>
 
   abstract delete<TResponse = AxiosResponse>(url: string): Promise<TResponse>
 }
@@ -35,7 +48,10 @@ class HttpAxiosService implements IHttpAdapter<AxiosInstance> {
    * @param params - Query parameters
    * @returns Promise with the response
    */
-  get<TParams = unknown, TResponse = AxiosResponse>(url: string, params?: TParams): Promise<TResponse> {
+  get<TParams = unknown, TResponse = AxiosResponse>(
+    url: string,
+    params?: TParams
+  ): Promise<TResponse> {
     return this.client.get(url, { params })
   }
 
@@ -64,7 +80,11 @@ class HttpAxiosService implements IHttpAdapter<AxiosInstance> {
    * @param data - Request payload
    * @returns Promise with the response
    */
-  post<TData = unknown, TResponse = AxiosResponse>(url: string, data?: TData, options?: AxiosRequestConfig): Promise<TResponse> {
+  post<TData = unknown, TResponse = AxiosResponse>(
+    url: string,
+    data?: TData,
+    options?: AxiosRequestConfig
+  ): Promise<TResponse> {
     return this.client.post(url, data, options)
   }
 

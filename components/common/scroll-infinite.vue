@@ -5,9 +5,9 @@ import { debounce } from 'lodash-es'
 import VirtualList from 'vue3-virtual-scroll-list'
 
 interface PaginationData {
-  total: number
-  per_page: number
-  page: number
+  total?: number
+  per_page?: number
+  page?: number
 }
 
 interface ScrollInfiniteProps<T = Record<string, any>> {
@@ -32,12 +32,12 @@ const props = withDefaults(defineProps<ScrollInfiniteProps>(), {
 
 const emits = defineEmits<{
   infinite: []
-  paginate: [{ page: number; pageSize: number }],
+  paginate: [{ page: number; pageSize: number }]
 }>()
 
 const slots = useSlots()
 
-const paginateData = ref<PaginationData>(props.paginate || { total: 100, per_page: 10, page: 1,  })
+const paginateData = ref<PaginationData>(props.paginate || { total: 100, per_page: 10, page: 1 })
 
 /**
  * Handle infinite scrolling event with debounce

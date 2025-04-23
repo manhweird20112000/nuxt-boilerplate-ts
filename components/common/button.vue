@@ -12,6 +12,7 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
+  text: '',
   type: 'primary',
   disabled: false,
   loading: false,
@@ -39,7 +40,15 @@ const onClickDebounce = _.debounce(() => {
 </script>
 
 <template>
-  <el-button v-loading.fullscreen.lock="loadingFullScreen" :type :loading :disabled="isDisabledDebounce || disabled || loading" :round :circle @click="onClick">
+  <el-button
+    v-loading.fullscreen.lock="loadingFullScreen"
+    :type
+    :loading
+    :disabled="isDisabledDebounce || disabled || loading"
+    :round
+    :circle
+    @click="onClick"
+  >
     <slot v-if="slots['text']" name="text" />
     <template v-else>{{ text }}</template>
     <template v-if="slots['loading']" #loading>

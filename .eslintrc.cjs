@@ -11,8 +11,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     '@nuxtjs/eslint-config-typescript',
-    './.eslintrc-auto-import.json',
-    'prettier'
+    './.eslintrc-auto-import.json'
   ],
   overrides: [],
   parser: 'vue-eslint-parser',
@@ -26,7 +25,12 @@ module.exports = {
     'vue/block-order': [
       'error',
       {
-        order: ['script:not([setup])', 'script[setup]', 'script[lang=ts]', 'template']
+        order: [
+          'script:not([setup])',
+          'script[setup]',
+          'script[lang=ts]',
+          'template'
+        ]
       }
     ],
     'vue/singleline-html-element-content-newline': 0,
@@ -56,6 +60,7 @@ module.exports = {
     'no-duplicate-case': 2,
     'no-empty-character-class': 2,
     'no-empty-pattern': 2,
+    'vue/max-attributes-per-line': 0,
     'vue/multi-word-component-names': 0,
     'vue/first-attribute-linebreak': [
       'error',
@@ -72,7 +77,15 @@ module.exports = {
     'import/order': [
       1,
       {
-        groups: ['builtin', 'external', 'parent', 'sibling', 'index', 'object', 'type'],
+        groups: [
+          'builtin',
+          'external',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type'
+        ],
         pathGroups: [
           {
             pattern: '{vue,vue-router,vite,@vitejs/plugin-vue}',
@@ -119,9 +132,10 @@ module.exports = {
       'error',
       {
         trailingComma: 'none',
-        semi: false
+        semi: false,
+        printWidth: 100
       },
-      { "tabWidth": 2, "useTabs": false }
+      { tabWidth: 2, useTabs: false }
     ]
   }
 }

@@ -24,8 +24,7 @@ withDefaults(defineProps<Props>(), {
     :class="['common-icon', type]"
     :style="`--common-icon-type: ${type} ;--common-icon-color: ${color}; --common-icon-width: ${width}px; --common-icon-height: ${height}px`"
     v-html="icons[name]"
-  >
-  </span>
+  />
 </template>
 
 <style lang="scss">

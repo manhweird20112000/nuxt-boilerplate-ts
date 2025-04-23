@@ -20,9 +20,8 @@ export const useUserStore = defineStore('user', {
       id: state.id,
       username: state.username,
       email: state.email
-    }),
+    })
   },
 
-  actions: {
-  }
+  actions: {}
 })

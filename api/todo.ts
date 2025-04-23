@@ -1,9 +1,9 @@
 export class TodoService {
-  async getTodos() {
+  getTodos() {
     return HttpService.get('todos')
   }
 
-  async getTotoDetail(todoId: number) {
+  getTotoDetail(todoId: number) {
     return HttpService.get('todos/' + todoId)
   }
 }

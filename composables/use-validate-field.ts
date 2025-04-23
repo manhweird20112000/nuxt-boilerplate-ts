@@ -11,6 +11,6 @@ export function useValidateField() {
 
   return {
     validateField,
-    resetField,
+    resetField
   }
 }
