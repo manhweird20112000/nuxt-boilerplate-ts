@@ -3,6 +3,12 @@ import PartialsItemList from '~/components/partials/item-list.vue'
 
 const { translate } = useTranslate()
 
+useWindowResize({
+  resize(val: any) {
+    console.log(val)
+  }
+})
+
 const image = useAssets('images/demo.jpg')
 const name = ref<string>('')
 
