@@ -16,7 +16,7 @@
     "@element-plus/icons-vue": "^2.3.1",
     "@element-plus/nuxt": "^1.0.9",
     "@nuxtjs/i18n": "^9.5.3",
-    "@nuxtjs/robots": "^3.0.0",
+    "@nuxtjs/robots": "^4.1.11",
     "@nuxtjs/sitemap": "^5.1.4",
     "@pinia/nuxt": "^0.5.1",
     "@tailwindcss/vite": "^4.1.3",

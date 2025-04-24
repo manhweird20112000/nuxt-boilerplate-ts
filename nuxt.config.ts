@@ -51,7 +51,7 @@ export default defineNuxtConfig({
         { name: 'twitter:creator', content: process.env['TWITTER_CREATOR'] || '' },
 
         // Apple specific
-        { name: 'apple-mobile-web-app-capable', content: 'yes' },
+        { name: 'mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
         { name: 'apple-mobile-web-app-title', content: process.env['APP_NAME'] || '' }
       ],
@@ -70,7 +70,8 @@ export default defineNuxtConfig({
         },
         { rel: 'canonical', href: process.env['APP_URL'] || '' }
       ]
-    }
+    },
+    pageTransition: { name: 'page', mode: 'out-in' }
   },
 
   ssr: true,

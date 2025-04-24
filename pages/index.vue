@@ -12,9 +12,9 @@ useWindowResize({
 const image = useAssets('images/demo.jpg')
 const name = ref<string>('')
 
-const showToast = () => {
-  // Toast.success({ message: 'CALL API...' })
-  // const resp = await HttpService.get('todos/1', {})
+const showToast = async () => {
+  Toast.success({ message: 'CALL API...' })
+  const resp = await HttpService.get('api/todos/1', {})
 }
 
 const address = computed(() => {

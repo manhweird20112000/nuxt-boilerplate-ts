@@ -25,12 +25,7 @@ module.exports = {
     'vue/block-order': [
       'error',
       {
-        order: [
-          'script:not([setup])',
-          'script[setup]',
-          'script[lang=ts]',
-          'template'
-        ]
+        order: ['script:not([setup])', 'script[setup]', 'script[lang=ts]', 'template']
       }
     ],
     'vue/singleline-html-element-content-newline': 0,
@@ -77,15 +72,7 @@ module.exports = {
     'import/order': [
       1,
       {
-        groups: [
-          'builtin',
-          'external',
-          'parent',
-          'sibling',
-          'index',
-          'object',
-          'type'
-        ],
+        groups: ['builtin', 'external', 'parent', 'sibling', 'index', 'object', 'type'],
         pathGroups: [
           {
             pattern: '{vue,vue-router,vite,@vitejs/plugin-vue}',
