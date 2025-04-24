@@ -14,12 +14,8 @@ const name = ref<string>('')
 
 const showToast = async () => {
   Toast.success({ message: 'CALL API...' })
-  const resp = await HttpService.get('api/todos/1', {})
+  await HttpService.get('api/todos/1', {})
 }
-
-const address = computed(() => {
-  return Formatter.ellipsis('0x786533b400807Dc9664F2dEEF5bC974E9F85294B', 5, 'mesial')
-})
 
 const infiniteScroll = () => {}
 </script>
@@ -29,7 +25,6 @@ const infiniteScroll = () => {}
     <common-button text="Click here" @click="showToast" />
     <nuxt-link to="/posts">Go to Posts </nuxt-link>
     <h1 class="text-3xl font-bold underline font-display">
-      {{ address }}
       {{ Formatter.ellipsis('0x786533b400807Dc9664F2dEEF5bC974E9F85294B', 5, 'mesial') }}
     </h1>
     <h1 class="text-3xl font-bold underline font-display">{{ translate('welcome') }} {{ name }}</h1>
@@ -39,7 +34,7 @@ const infiniteScroll = () => {}
     <client-only>
       <common-scroll-infinite
         list-class-custom="h-[400px] overflow-y-auto"
-        :data="[...Array(1000).keys()].map((item) => ({ id: item }))"
+        :data="[...Array(10000).keys()].map((item) => ({ id: item }))"
         key-extract="id"
         :item-render="PartialsItemList"
         @infinite="infiniteScroll"
