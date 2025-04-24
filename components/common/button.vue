@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import _ from 'lodash'
+import { debounce } from 'lodash-es'
 interface Props {
   text?: string
   disabled?: boolean
@@ -33,7 +33,7 @@ const onClick = () => {
   onClickDebounce()
 }
 
-const onClickDebounce = _.debounce(() => {
+const onClickDebounce = debounce(() => {
   emits('submit')
   isDisabledDebounce.value = false
 }, 500)
