@@ -1,6 +1,6 @@
 // using @use or @forward instead @import
 @use "element-plus/theme-chalk/src/dark/css-vars.scss" as *;
-@import "./pages/index.scss";
+@use "./pages/index.scss";
 
 .fade-enter-from,
 .fade-leave-to {
