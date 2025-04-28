@@ -1,5 +1,5 @@
 class HelperService {
-  copyWalletAddress = (text: string) => {
+  copyText = (text: string) => {
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(text).then(() => {
         this.unsecuredCopyToClipboard(text)

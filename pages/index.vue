@@ -21,7 +21,7 @@ const infiniteScroll = () => {}
 </script>
 
 <template>
-  <div>
+  <div class="section-home">
     <common-button text="Click here" @click="showToast" />
     <nuxt-link to="/posts">Go to Posts </nuxt-link>
     <h1 class="text-3xl font-bold underline font-display">
