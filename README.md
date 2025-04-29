@@ -35,6 +35,7 @@ nuxt-3-base-v2/
 ├── composables/         # Vue composables for reusable logic
 ├── generated/           # Auto-generated files
 ├── i18n/                # Internationalization files
+├── api/                 # use-case project
 ├── infra/               # Infrastructure configuration
 ├── layouts/             # Nuxt layout templates
 ├── pages/               # Application pages

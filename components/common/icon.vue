@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import icons from '@/generated/icons.json'
+import icons from '~/generated/icons.json'
 
 type Icons = typeof icons
 
@@ -9,18 +9,31 @@ interface Props {
   width?: number
   height?: number
   type?: 'stroke' | 'fill' | string
+  classNames?: string
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   color: '',
   width: 24,
   height: 24,
-  type: ''
+  type: '',
+  classNames: ''
 })
+
+onMounted(() => {
+  nextTick(() => {
+    if (instance.value) {
+      instance.value.querySelector('svg')?.classList.add(props.classNames)
+    }
+  })
+})
+
+const instance = ref<HTMLSpanElement>()
 </script>
 
 <template>
   <span
+    ref="instance"
     :class="['common-icon', type]"
     :style="`--common-icon-type: ${type} ;--common-icon-color: ${color}; --common-icon-width: ${width}px; --common-icon-height: ${height}px`"
     v-html="icons[name]"

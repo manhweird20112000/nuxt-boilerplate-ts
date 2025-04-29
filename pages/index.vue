@@ -22,6 +22,10 @@ const infiniteScroll = () => {}
 
 <template>
   <div class="section-home">
+    <client-only>
+      <common-icon name="language" class-names="hover:stroke-red-600" :width="100" :height="100" />
+      <common-icon name="language" color="#F0BB78" type="stroke" />
+    </client-only>
     <common-button text="Click here" @click="showToast" />
     <nuxt-link to="/posts">Go to Posts </nuxt-link>
     <h1 class="text-3xl font-bold underline font-display">
@@ -42,5 +46,3 @@ const infiniteScroll = () => {}
     </client-only>
   </div>
 </template>
-
-<style scoped></style>
