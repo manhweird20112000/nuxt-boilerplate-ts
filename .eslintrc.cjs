@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es2021: true,
@@ -9,9 +10,9 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:vue/vue3-essential',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
     '@nuxtjs/eslint-config-typescript',
-    './.eslintrc-auto-import.json'
+    './.eslintrc-auto-import.json',
+    'plugin:prettier/recommended'
   ],
   overrides: [],
   parser: 'vue-eslint-parser',
@@ -28,11 +29,11 @@ module.exports = {
         order: ['script:not([setup])', 'script[setup]', 'script[lang=ts]', 'template']
       }
     ],
-    'vue/singleline-html-element-content-newline': 0,
-    'tailwindcss/no-custom-classname': 0,
-    indent: 0,
+    'vue/singleline-html-element-content-newline': 'off',
+    'tailwindcss/no-custom-classname': 'off',
+    indent: 'off',
     quotes: ['error', 'single'],
-    semi: 0,
+    semi: 'off',
     'comma-dangle': ['error', 'never'],
     'arrow-spacing': [
       'error',
@@ -42,7 +43,7 @@ module.exports = {
       }
     ],
     'object-curly-spacing': ['error', 'always'],
-    'space-before-function-paren': 0,
+    'space-before-function-paren': 'off',
     'space-infix-ops': [
       'error',
       {
@@ -50,13 +51,13 @@ module.exports = {
       }
     ],
     'no-var': 'error',
-    'no-dupe-class-members': 2,
-    'no-dupe-keys': 2,
-    'no-duplicate-case': 2,
-    'no-empty-character-class': 2,
-    'no-empty-pattern': 2,
-    'vue/max-attributes-per-line': 0,
-    'vue/multi-word-component-names': 0,
+    'no-dupe-class-members': 'error',
+    'no-dupe-keys': 'error',
+    'no-duplicate-case': 'error',
+    'no-empty-character-class': 'error',
+    'no-empty-pattern': 'error',
+    'vue/max-attributes-per-line': 'off',
+    'vue/multi-word-component-names': 'off',
     'vue/first-attribute-linebreak': [
       'error',
       {
@@ -70,7 +71,7 @@ module.exports = {
     'import/no-unresolved': 'error',
     'import/namespace': ['error', { allowComputed: true }],
     'import/order': [
-      1,
+      'warn',
       {
         groups: ['builtin', 'external', 'parent', 'sibling', 'index', 'object', 'type'],
         pathGroups: [
@@ -100,13 +101,13 @@ module.exports = {
         fixStyle: 'separate-type-imports'
       }
     ],
-    'prefer-regex-literals': 0,
-    '@typescript-eslint/ban-ts-comment': 0,
-    '@typescript-eslint/no-unused-vars': 1,
-    '@typescript-eslint/no-empty-function': 1,
-    '@typescript-eslint/no-explicit-any': 0,
+    'prefer-regex-literals': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-empty-function': 'warn',
+    '@typescript-eslint/no-explicit-any': 'off',
     'import/extensions': [
-      2,
+      'error',
       'ignorePackages',
       {
         js: 'never',
@@ -120,9 +121,13 @@ module.exports = {
       {
         trailingComma: 'none',
         semi: false,
-        printWidth: 100
-      },
-      { tabWidth: 2, useTabs: false }
+        printWidth: 100,
+        tabWidth: 2,
+        useTabs: false,
+        singleQuote: true,
+        bracketSpacing: true,
+        arrowParens: 'always'
+      }
     ]
   }
 }
