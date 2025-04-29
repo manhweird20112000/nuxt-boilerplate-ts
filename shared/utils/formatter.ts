@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
+// import utc from 'dayjs/plugin/utc'
 
-dayjs.extend(utc)
+// dayjs.extend(utc)
 
 /**
  * Service for formatting various data types
@@ -68,12 +68,12 @@ class FormatterService {
    * @param value - UTC time string
    * @returns Formatted local time string
    */
-  timeLocal(value: string): string {
-    if (!value) {
-      return ''
-    }
-    return dayjs.utc(value, 'YYYY-MM-DD HH:mm:ss').local().format('YYYY/MM/DD HH:mm:ss')
-  }
+  // timeLocal(value: string): string {
+  //   if (!value) {
+  //     return ''
+  //   }
+  //   return dayjs.utc(value, 'YYYY-MM-DD HH:mm:ss').local().format('YYYY/MM/DD HH:mm:ss')
+  // }
 }
 
 export const Formatter = new FormatterService()

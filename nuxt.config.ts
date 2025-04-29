@@ -128,7 +128,7 @@ export default defineNuxtConfig({
     autoImport: true,
     global: true,
     scan: true,
-    dirs: ['shared/utils']
+    dirs: ['./shared/utils', './shared/common']
   },
 
   typescript: {
