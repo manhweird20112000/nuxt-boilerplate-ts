@@ -9,7 +9,6 @@ useWindowResize({
   }
 })
 
-const image = useAssets('images/demo.jpg')
 const name = ref<string>('')
 
 const showToast = async () => {
@@ -22,19 +21,19 @@ const infiniteScroll = () => {}
 
 <template>
   <div class="section-home">
-    <client-only>
-      <common-icon name="language" class-names="hover:stroke-red-600" :width="100" :height="100" />
-      <common-icon name="language" color="#F0BB78" type="stroke" />
-    </client-only>
+    <common-icon name="language" class-names="hover:stroke-red-600" :width="100" :height="100" />
+    <common-icon name="language" color="#F0BB78" type="stroke" />
+    <nuxt-img src="https://i.pinimg.com/736x/14/08/30/140830b90e252f778cd1a55b8df3ff54.jpg" />
     <common-button text="Click here" @click="showToast" />
     <nuxt-link to="/posts">Go to Posts </nuxt-link>
     <h1 class="text-3xl font-bold underline font-display">
       {{ Formatter.ellipsis('0x786533b400807Dc9664F2dEEF5bC974E9F85294B', 5, 'mesial') }}
     </h1>
     <h1 class="text-3xl font-bold underline font-display">{{ translate('welcome') }} {{ name }}</h1>
-    <div class="size-20">
-      <common-image fit="cover" :src="image" alt="image" />
-    </div>
+    <common-image
+      src="https://i.pinimg.com/736x/14/08/30/140830b90e252f778cd1a55b8df3ff54.jpg"
+      alt="image"
+    />
     <client-only>
       <common-scroll-infinite
         list-class-custom="h-[400px] overflow-y-auto"

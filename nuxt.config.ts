@@ -86,7 +86,8 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@element-plus/nuxt',
     '@nuxtjs/robots',
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    '@nuxt/image'
   ],
   elementPlus: {
     importStyle: 'scss'

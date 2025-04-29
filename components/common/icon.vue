@@ -22,8 +22,8 @@ const props = withDefaults(defineProps<Props>(), {
 
 onMounted(() => {
   nextTick(() => {
-    if (instance.value) {
-      instance.value.querySelector('svg')?.classList.add(props.classNames)
+    if (instance.value && props.classNames && process.client) {
+      instance.value.querySelector('svg')?.classList?.add(props.classNames)
     }
   })
 })
