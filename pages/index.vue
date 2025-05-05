@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const { translate } = useTranslate()
-
 useWindowResize({
   resize(val: any) {
     console.log(val)

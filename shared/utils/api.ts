@@ -106,5 +106,3 @@ class HttpAxiosService implements IHttpAdapter<AxiosInstance> {
 }
 
 export const HttpService = new HttpAxiosService()
-
-export const ExampleHttpService = new HttpAxiosService('https://fakestoreapi.com')
