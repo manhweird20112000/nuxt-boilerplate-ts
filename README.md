@@ -6,15 +6,20 @@ A modern, feature-rich Nuxt 3 base project with TypeScript support, internationa
 
 - **Nuxt 3**: Modern Vue.js framework with improved performance and developer experience
 - **TypeScript**: Full TypeScript support for enhanced type safety and developer experience
-- **Element Plus**: Integrated UI component library
+- **Element Plus**: Integrated UI component library with custom theme support
 - **TailwindCSS**: Utility-first CSS framework for rapid UI development
 - **Internationalization**: Multi-language support with @nuxtjs/i18n
 - **SEO Optimized**: Includes sitemap and robots.txt modules
-- **Comprehensive Metadata**: Full set of metadata for SEO and social sharing, with easy page-specific customization
+- **Comprehensive Metadata**: Full set of metadata for SEO and social sharing
 - **Pinia**: State management with Pinia store
 - **GSAP**: Animation library for creating engaging user experiences
 - **Axios**: HTTP client for API requests
 - **ESLint & Prettier**: Code quality and formatting tools
+- **Playwright**: Modern end-to-end testing framework
+- **Husky & Commitlint**: Git hooks and commit message linting
+- **Day.js**: Lightweight date library
+- **Vue Router**: Client-side routing
+- **Vue3 Virtual Scroll List**: Efficient virtual scrolling for large lists
 
 ## Project Structure
 
@@ -35,7 +40,7 @@ nuxt-3-base-v2/
 ├── composables/         # Vue composables for reusable logic
 ├── generated/           # Auto-generated files
 ├── i18n/                # Internationalization files
-├── api/                 # use-case project
+├── api/                 # API integration and services
 ├── infra/               # Infrastructure configuration
 ├── layouts/             # Nuxt layout templates
 ├── pages/               # Application pages
@@ -51,10 +56,11 @@ nuxt-3-base-v2/
 │   ├── index.ts         # Exports all stores for easier imports
 │   ├── user.ts          # User authentication and profile state
 │   └── ui.ts            # UI state (theme, sidebar, loading, etc.)
+├── tests/               # Playwright test files
 ├── types/               # TypeScript type definitions
 ├── .env                 # Environment variables
 ├── .env.example         # Example environment variables
-├── app-loading.html     # This file runs when SSR is set to false and is executed on the first page load.
+├── app-loading.html     # Loading template for client-side rendering
 ├── app.vue              # Main application entry
 ├── nuxt.config.ts       # Nuxt configuration
 └── tsconfig.json        # TypeScript configuration
@@ -104,6 +110,24 @@ npm run dev
 
 The application will be available at http://localhost:3000.
 
+## Testing
+
+Run Playwright tests:
+
+```bash
+yarn test
+# or
+npm run test
+```
+
+View test reports:
+
+```bash
+yarn test:report
+# or
+npm run test:report
+```
+
 ## Building for Production
 
 ```bash
@@ -127,6 +151,29 @@ For deployment with PM2:
 ```bash
 pm2 start ecosystem.config.js
 ```
+
+## Code Quality
+
+The project uses ESLint and Prettier for code quality and formatting. Run linting:
+
+```bash
+yarn lint
+# or
+npm run lint
+```
+
+## Git Hooks
+
+The project uses Husky and Commitlint for Git hooks and commit message linting. Commit messages must follow the conventional commit format:
+
+- feat: A new feature
+- fix: A bug fix
+- docs: Documentation only changes
+- style: Changes that do not affect the meaning of the code
+- refactor: A code change that neither fixes a bug nor adds a feature
+- perf: A code change that improves performance
+- test: Adding missing tests or correcting existing tests
+- chore: Changes to the build process or auxiliary tools
 
 ## Customization
 
@@ -155,22 +202,6 @@ To add a new store:
 ## Internationalization
 
 The project supports multiple languages. Add or modify language files in the `i18n/` directory.
-
-## Metadata and SEO
-
-The project includes comprehensive metadata support for SEO and social sharing.
-
-### Default Metadata
-
-Default metadata is configured in `nuxt.config.ts` and includes:
-
-- Basic SEO metadata (title, description, keywords)
-- Open Graph / Facebook metadata
-- Twitter Card metadata
-- Apple specific metadata
-- Favicons and web app manifest
-
-For more advanced usage, see the [metadata documentation](docs/metadata.md).
 
 ## License
 
