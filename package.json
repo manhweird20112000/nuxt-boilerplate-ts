@@ -10,6 +10,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prepare": "husky",
+    "test": " yarn playwright test",
+    "test:report": "yarn playwright show-report",
     "lint": "eslint . --ext .js,.ts,.vue"
   },
   "dependencies": {
@@ -36,6 +38,7 @@
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@playwright/test": "^1.52.0",
     "@types/js-cookie": "^3.0.6",
     "@typescript-eslint/eslint-plugin": "^7.7.0",
     "@typescript-eslint/parser": "^7.7.0",
