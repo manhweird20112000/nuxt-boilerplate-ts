@@ -11,7 +11,7 @@ interface PaginationData {
 }
 
 interface ScrollInfiniteProps<T = Record<string, any>> {
-  listClassCustom?: string
+  listClassCustom?: HTMLAttributes['class']
   paginateClass?: HTMLAttributes['class']
   loading?: boolean
   data: T[]
