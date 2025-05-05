@@ -11,9 +11,10 @@ interface Props {
   iconClose?: Component
   hiddenHeader?: boolean
   dialogClass?: HTMLAttributes['class']
+  autoReset?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   center: false,
   fullscreen: false,
   showClose: false,
@@ -21,7 +22,8 @@ withDefaults(defineProps<Props>(), {
   width: 400,
   hiddenHeader: false,
   dialogClass: '',
-  iconClose: undefined
+  iconClose: undefined,
+  autoReset: false
 })
 
 const emits = defineEmits<{ close: [] }>()
@@ -29,10 +31,15 @@ const emits = defineEmits<{ close: [] }>()
 const slots: any = useSlots()
 
 const model = defineModel<boolean>()
+
+const isResetDataChild = computed(() => {
+  return props.autoReset ? model.value : true
+})
 </script>
 
 <template>
   <el-dialog
+    v-if="isResetDataChild"
     v-model="model"
     :modal-class="'common-dialog' + dialogClass"
     :header-class="`common-dialog__header ${hiddenHeader ? 'is-hidden-header' : ''}`"

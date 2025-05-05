@@ -12,11 +12,6 @@ class HttpModule {
 
     this.instance.interceptors.request.use(
       (config) => {
-        // const token = StorageData.getStorage(StorageKey.AUTH)
-        // if (token) {
-        //   config.headers.Authorization = 'Bearer ' + token
-        // }
-
         return config
       },
       (error: AxiosError) => Promise.reject(error)
