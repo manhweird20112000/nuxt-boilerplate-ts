@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Component } from 'vue'
+import type { Component, HTMLAttributes } from 'vue'
 
 import { debounce } from 'lodash-es'
 import VirtualList from 'vue3-virtual-scroll-list'
@@ -12,7 +12,7 @@ interface PaginationData {
 
 interface ScrollInfiniteProps<T = Record<string, any>> {
   listClassCustom?: string
-  paginateClass?: string
+  paginateClass?: HTMLAttributes['class']
   loading?: boolean
   data: T[]
   keyExtract: keyof T | string

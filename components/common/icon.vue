@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { HTMLAttributes } from 'vue'
+
 import icons from '~/generated/icons.json'
 
 type Icons = typeof icons
@@ -9,7 +11,7 @@ interface Props {
   width?: number
   height?: number
   type?: 'stroke' | 'fill' | string
-  classNames?: string
+  classNames?: HTMLAttributes['class']
 }
 
 const props = withDefaults(defineProps<Props>(), {

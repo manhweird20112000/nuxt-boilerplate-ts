@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import type { HTMLAttributes } from 'vue'
+
 interface Props {
   width?: number
   center?: boolean
@@ -8,7 +10,7 @@ interface Props {
   draggable?: boolean
   iconClose?: Component
   hiddenHeader?: boolean
-  dialogClass?: string
+  dialogClass?: HTMLAttributes['class']
 }
 
 withDefaults(defineProps<Props>(), {
