@@ -1,9 +1,6 @@
 import type { AxiosResponse } from 'axios'
 import axios, { type AxiosError, type AxiosInstance } from 'axios'
 
-import { StorageKey } from '~/shared/common/constants'
-import { StorageData } from '~/shared/utils/storage'
-
 class HttpModule {
   private readonly instance: AxiosInstance
 
@@ -15,10 +12,10 @@ class HttpModule {
 
     this.instance.interceptors.request.use(
       (config) => {
-        const token = StorageData.getStorage(StorageKey.AUTH)
-        if (token) {
-          config.headers.Authorization = 'Bearer ' + token
-        }
+        // const token = StorageData.getStorage(StorageKey.AUTH)
+        // if (token) {
+        //   config.headers.Authorization = 'Bearer ' + token
+        // }
 
         return config
       },

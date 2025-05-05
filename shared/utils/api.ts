@@ -8,6 +8,8 @@ import HttpModule from '~/infra/api/module'
 export abstract class IHttpAdapter<T = unknown> {
   abstract readonly client: T
 
+  abstract setHeaders(headers: AxiosRequestConfig['headers']): void
+
   abstract get<TParams = unknown, TResponse = AxiosResponse>(
     url: string,
     params?: TParams
@@ -40,6 +42,10 @@ class HttpAxiosService implements IHttpAdapter<AxiosInstance> {
 
   constructor(baseUrl = import.meta.env['VITE_API_URL'] || '') {
     this.client = new HttpModule(baseUrl).getInstance()
+  }
+
+  setHeaders(headers: AxiosRequestConfig['headers']): void {
+    this.client.defaults.headers = headers as any
   }
 
   /**
@@ -100,3 +106,5 @@ class HttpAxiosService implements IHttpAdapter<AxiosInstance> {
 }
 
 export const HttpService = new HttpAxiosService()
+
+export const ExampleHttpService = new HttpAxiosService('https://fakestoreapi.com')
