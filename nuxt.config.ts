@@ -83,12 +83,19 @@ export default defineNuxtConfig({
 
   modules: [
     '@pinia/nuxt',
-    '@nuxtjs/sitemap',
+    '@nuxtjs/sitemap', 
     '@element-plus/nuxt',
     '@nuxtjs/robots',
     '@nuxtjs/i18n',
     '@nuxt/image'
   ],
+  site: {
+    url: process.env['APP_URL'] || '',
+    name: 'Nuxt Sitemap Demo'
+  },
+  sitemap: {
+    sources: ['/api/__sitemap__/urls']
+  },
   elementPlus: {
     importStyle: 'scss'
   },

@@ -13,7 +13,7 @@ const isOpenDialog = ref<boolean>(false)
     Hello World!
     <button @click="isOpenDialog = !isOpenDialog">Click open dialog</button>
     <common-dialog v-model="isOpenDialog" auto-reset>
-      <template #content> <partials-test /> </template>
+      <template #content> <div class="h-[200vh] w-[100px] bg-red-600"></div></template>
     </common-dialog>
   </div>
 </template>
