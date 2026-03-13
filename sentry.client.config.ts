@@ -45,7 +45,9 @@ Sentry.init({
       return null
     }
 
-    const ua = (hint as any)?.request?.headers?.['user-agent'] || (event as any)?.request?.headers?.['user-agent']
+    const ua =
+      (hint as any)?.request?.headers?.['user-agent'] ||
+      (event as any)?.request?.headers?.['user-agent']
 
     if (ua && /bot|crawler|spider/i.test(ua)) {
       return null
