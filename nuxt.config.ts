@@ -6,6 +6,7 @@ import ElementPlus from 'unplugin-element-plus/vite'
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   app: {
     head: {
       title: process.env['APP_NAME'] || '',
@@ -76,25 +77,29 @@ export default defineNuxtConfig({
   spaLoadingTemplate: './app-loading.html',
 
   css: ['./assets/styles/index.scss', './assets/styles/tailwind.css'],
-
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/sitemap',
     '@element-plus/nuxt',
     '@nuxtjs/robots',
     '@nuxtjs/i18n',
-    '@nuxt/image'
+    '@nuxt/image',
+    '@sentry/nuxt/module'
   ],
+
   site: {
     url: process.env['APP_URL'] || '',
     name: 'Nuxt Sitemap Demo'
   },
+
   sitemap: {
     sources: ['/api/__sitemap__/urls']
   },
+
   elementPlus: {
     importStyle: 'scss'
   },
+
   vite: {
     resolve: {
       alias: {
@@ -159,7 +164,9 @@ export default defineNuxtConfig({
       redirectOn: 'root'
     }
   },
+
   compatibilityDate: '2024-11-04',
+
   hooks: {
     ready() {
       const data: Record<string, string> = {}
@@ -190,4 +197,13 @@ export default defineNuxtConfig({
       fs.writeFileSync(path.join(pathSave, 'icons.json'), JSON.stringify(data))
     }
   },
+
+  sentry: {
+    org: 'bekisoft-40',
+    project: 'javascript-nuxt'
+  },
+
+  sourcemap: {
+    client: 'hidden'
+  }
 })

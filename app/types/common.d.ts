@@ -16,6 +16,14 @@ declare global {
   type RecursiveKeyOf<TObj extends object> = {
     [TKey in keyof TObj & (string | number)]: RecursiveKeyOfHandleValue<TObj[TKey], `${TKey}`>
   }[keyof TObj & (string | number)]
+
+  interface ResponseData<T> {
+    message: string
+    errors?: any
+    data: T
+  }
+
+  type Future<T> = Promise<AxiosResponse<ResponseData<T>>>
 }
 
 export {}
