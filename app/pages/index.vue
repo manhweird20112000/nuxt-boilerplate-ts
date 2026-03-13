@@ -1,10 +1,7 @@
-<script setup lang="ts">
-const triggerError = () => {
-  throw new Error('Nuxt Button Error')
-}
-const isOpenDialog = ref<boolean>(false)
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div class="section-home"><common-button @click="triggerError">Click me</common-button></div>
+  <div class="section-home flex items-center justify-center h-screen w-dvw font-bold text-4xl">
+    {{ $t('welcome') }}
+  </div>
 </template>

@@ -20,9 +20,9 @@ withDefaults(defineProps<Props>(), {
       </div>
     </template>
     <template #placeholder>
-      <el-skeleton animated loading :count="1" class="!size-full">
+      <el-skeleton animated loading :count="1" class="size-full!">
         <template #template>
-          <el-skeleton-item variant="image" class="!size-full" />
+          <el-skeleton-item variant="image" class="size-full!" />
         </template>
       </el-skeleton>
     </template>

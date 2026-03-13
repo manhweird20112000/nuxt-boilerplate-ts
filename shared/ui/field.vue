@@ -3,7 +3,7 @@ import { debounce } from 'lodash-es'
 
 import type { FormInstance } from 'element-plus'
 
-import { useValidateField } from '~/composables/use-validate-field'
+import { useValidateField } from '~~/shared/composables/use-validate-field'
 
 interface FieldProps {
   formRef?: FormInstance
