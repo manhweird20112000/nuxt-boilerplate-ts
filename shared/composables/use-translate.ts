@@ -1,4 +1,4 @@
-import type { TxKeyPath } from "../types/common.type"
+import type { TxKeyPath } from '../types/common.type'
 
 export function useTranslate() {
   const { $i18n } = useNuxtApp()

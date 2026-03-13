@@ -28,5 +28,33 @@ Sentry.init({
   sendDefaultPii: true,
 
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
-  debug: false
+  debug: false,
+
+  ignoreErrors: [
+    'ResizeObserver loop limit exceeded',
+    'Script error',
+    'NetworkError',
+    'Failed to fetch',
+    'Non-Error promise rejection captured'
+  ],
+
+  denyUrls: [/extensions\//i, /^chrome:\/\//i, /moz-extension:\/\//i],
+
+  beforeSend: (event, hint) => {
+    if (process.env.NODE_ENV !== 'production') {
+      return null
+    }
+
+    const ua = (hint as any)?.request?.headers?.['user-agent'] || (event as any)?.request?.headers?.['user-agent']
+
+    if (ua && /bot|crawler|spider/i.test(ua)) {
+      return null
+    }
+
+    if (event.level === 'warning' || event.level === 'info') {
+      return null
+    }
+
+    return event
+  }
 })
