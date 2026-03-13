@@ -19,13 +19,23 @@ class HttpModule {
 
     this.instance.interceptors.response.use(
       (response: AxiosResponse) => {
-        // if (response?.data?.status_code !== 200) {
-        //   Toast.error({ message: response?.data?.message })
-        // }
-
-        return response?.data
+        if (response?.data?.status_code !== 200) {
+          Toast.error({ message: response?.data?.message })
+          if (response?.data?.status_code === 404) {
+            showError({ statusCode: 404 })
+          } else if (response?.data?.status_code === 500) {
+            showError({ statusCode: 500 })
+          } else if (response?.data?.status_code === 401) {
+            StorageData.clearStorage()
+            window.location.reload()
+          }
+        }
+        return response
       },
-      (error: AxiosError) => Promise.reject(error)
+      (error: AxiosError) => {
+        Toast.error({ message: (error?.response?.data as any)?.message })
+        return error.response
+      }
     )
   }
 

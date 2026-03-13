@@ -104,9 +104,9 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@use "./assets/styles/element/index.scss" as *;'
-          // api: 'modern-compiler' as any
-        }
+          additionalData: '@use "./assets/styles/element/index.scss" as *;',
+          api: 'modern-compiler'
+        } as any
       }
     },
 
@@ -144,7 +144,7 @@ export default defineNuxtConfig({
 
   devServer: {
     host: '0.0.0.0',
-    port: Number(process.env['PORT']) || 8000
+    port: Number(process.env['APP_PORT']) || 8000
   },
 
   i18n: {
@@ -158,9 +158,6 @@ export default defineNuxtConfig({
       cookieKey: 'i18n_redirected',
       redirectOn: 'root'
     }
-    // bundle: {
-    //   optimizeTranslationDirective: false
-    // }
   },
   compatibilityDate: '2024-11-04',
   hooks: {
@@ -192,5 +189,5 @@ export default defineNuxtConfig({
 
       fs.writeFileSync(path.join(pathSave, 'icons.json'), JSON.stringify(data))
     }
-  }
+  },
 })
