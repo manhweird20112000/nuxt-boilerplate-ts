@@ -1,12 +1,8 @@
 import * as fs from 'fs'
 import path from 'path'
 
-// import { createResolver } from '@nuxt/kit'
-// eslint-disable-next-line import/no-unresolved
 import tailwindcss from '@tailwindcss/vite'
-// eslint-disable-next-line import/no-unresolved
 import ElementPlus from 'unplugin-element-plus/vite'
-// const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -83,7 +79,7 @@ export default defineNuxtConfig({
 
   modules: [
     '@pinia/nuxt',
-    '@nuxtjs/sitemap', 
+    '@nuxtjs/sitemap',
     '@element-plus/nuxt',
     '@nuxtjs/robots',
     '@nuxtjs/i18n',
@@ -108,8 +104,8 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@use "./assets/styles/element/index.scss" as *;',
-          api: 'modern-compiler'
+          additionalData: '@use "./assets/styles/element/index.scss" as *;'
+          // api: 'modern-compiler' as any
         }
       }
     },
@@ -161,10 +157,10 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieKey: 'i18n_redirected',
       redirectOn: 'root'
-    },
-    bundle: {
-      optimizeTranslationDirective: false
     }
+    // bundle: {
+    //   optimizeTranslationDirective: false
+    // }
   },
   compatibilityDate: '2024-11-04',
   hooks: {
@@ -179,7 +175,7 @@ export default defineNuxtConfig({
 
       icons.forEach((icon: string) => {
         const pathIcon = path.join(pathFolderIcon, icon)
-        const filename: string = icon.split('.')[0]
+        const filename: string = icon.split('.')[0] || ''
 
         if (!filename) {
           return

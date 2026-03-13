@@ -15,7 +15,6 @@ A modern, feature-rich Nuxt 3 base project with TypeScript support, internationa
 - **GSAP**: Animation library for creating engaging user experiences
 - **Axios**: HTTP client for API requests
 - **ESLint & Prettier**: Code quality and formatting tools
-- **Playwright**: Modern end-to-end testing framework
 - **Husky & Commitlint**: Git hooks and commit message linting
 - **Day.js**: Lightweight date library
 - **Vue Router**: Client-side routing
@@ -56,7 +55,6 @@ nuxt-3-base-v2/
 │   ├── index.ts         # Exports all stores for easier imports
 │   ├── user.ts          # User authentication and profile state
 │   └── ui.ts            # UI state (theme, sidebar, loading, etc.)
-├── tests/               # Playwright test files
 ├── types/               # TypeScript type definitions
 ├── .env                 # Environment variables
 ├── .env.example         # Example environment variables
@@ -109,24 +107,6 @@ npm run dev
 ```
 
 The application will be available at http://localhost:3000.
-
-## Testing
-
-Run Playwright tests:
-
-```bash
-yarn test
-# or
-npm run test
-```
-
-View test reports:
-
-```bash
-yarn test:report
-# or
-npm run test:report
-```
 
 ## Building for Production
 
